@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 @Entity
 public class UserProfile{
+    @Id-primary key
     private Long id;
     private String username;
     private String email;
@@ -27,6 +28,25 @@ public class UserProfile{
     }
 
     public String getEmail(){
-        return 
+        return email;
     }
+
+    public void SetEmail(){
+        return email;
+    }
+     public String getBio(){
+        return bio;
+    }
+
+    public void SetBio(){
+        return bio;
+    }
+     public String getEmail(){
+        return email;
+    }
+
+    public void SetEmail(){
+        return email;
+    }
+
 }
