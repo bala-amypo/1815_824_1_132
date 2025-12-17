@@ -76,5 +76,12 @@ public class UserProfile {
         this.updatedAt = updatedAt;
     }
 
-    public UserProfile(Long id)
+    public UserProfile(Long id,String username,String email,String bio,Boolean active,Timestamp createdAt,Timestamp updatedAt)
+    this.id=id;
+    this.username=username;
+    this.email=email;
+    this.bio=bio;
+    this.active=active;
+    this.createdAt=createdAt;
+    this.
 }
