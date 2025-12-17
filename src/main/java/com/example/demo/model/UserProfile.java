@@ -1,9 +1,17 @@
 package com.example.demo.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+
 @Entity
-public class UserProfile{
-    @Id-primary key
+public class UserProfile {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String username;
     private String email;
     private String bio;
@@ -11,56 +19,62 @@ public class UserProfile{
     private String createdAt;
     private String updatedAt;
 
-    public long getId(){
+    public Long getId() {
         return id;
     }
-    public void setId(int id){
-        this.id=id;
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getUsername(){
-        return Username;
-    }
-    public void setUsername(String username){
-        this.username=username;
+    public String getUsername() {
+        return username;
     }
 
-    public String getEmail(){
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
         return email;
     }
-    public void SetEmail(String email){
-        this.email=email;
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-     public String getBio(){
+    public String getBio() {
         return bio;
     }
-    public void SetBio(String bio){
-        this.bio=bio;
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 
-     public String getActive(){
+    public Boolean getActive() {
         return active;
     }
-    public void SetActive(Boolean active){
-        this.active=active;
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
-     public String getCreatedAt(){
+ 
+    public String getCreatedAt() {
         return createdAt;
     }
-    public void SetCreatedAt(Boolean createdAt){
-        this.createdAt=createdAt;
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 
-     public String getUpdatedAt(){
+    public String getUpdatedAt() {
         return updatedAt;
     }
-    public void SetUpdatedAt(Boolean updatedAt){
-        this.updatedAt=updatedAt;
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
-
-
-
+    public UserProfile(Long id)
 }
