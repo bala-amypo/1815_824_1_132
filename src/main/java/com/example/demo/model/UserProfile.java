@@ -8,5 +8,5 @@ public class UserProfile{
     private String bio;
     private Boolean active;
     private String createdAt;
-    private String updatedA
+    private String updatedAt;
 }
