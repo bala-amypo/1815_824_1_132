@@ -21,7 +21,17 @@ public class UserProfile {
 
 
     @PrePersist
-    @Generate
+    public void onCreate(){
+        this.createdAt=new Timestamp(System.currentTimeMillis());
+    }
+    @PrePersist
+    public void onCreate(){
+        this.updatedAt=new Timestamp(System.currentTimeMillis());
+    }
+
+    
+
+
     @Column(unique = true)
     private String username;
     private String email;
