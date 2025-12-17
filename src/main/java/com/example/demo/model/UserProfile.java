@@ -18,7 +18,7 @@ public class UserProfile {
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
-    @Column(unique=true)
+    @Column(unique = true)
     private String username;
     private String email;
 
@@ -63,7 +63,7 @@ public class UserProfile {
     }
 
  
-    public String getCreatedAt() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
@@ -71,7 +71,7 @@ public class UserProfile {
         this.createdAt = createdAt;
     }
 
-    public  getUpdatedAt() {
+    public Timestamp getUpdatedAt() {
         return updatedAt;
     }
 
