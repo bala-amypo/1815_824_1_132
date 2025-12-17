@@ -22,11 +22,11 @@ public class Skill{
         this.name=name;
     }
 
-     public long getId(){
-        return id;
+     public long getCategory(){
+        return category;
     }
-    public void setid(int id){
-        this.id=id;
+    public void setCategory(String category){
+        this.id=category;
     }
 
      public long getId(){
