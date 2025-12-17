@@ -26,13 +26,13 @@ public class Skill{
         return category;
     }
     public void setCategory(String category){
-        this.id=category;
+        this.category=category;
     }
 
-     public long getId(){
-        return id;
+     public long getActive(){
+        return active;
     }
-    public void setid(int id){
-        this.id=id;
+    public void setActive(String active){
+        this.active=active;
     }
 }
