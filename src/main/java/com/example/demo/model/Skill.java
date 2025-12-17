@@ -18,8 +18,8 @@ public class Skill{
      public long getName(){
         return name;
     }
-    public void setid(int id){
-        this.id=id;
+    public void setName(String name){
+        this.name=name;
     }
 
      public long getId(){
