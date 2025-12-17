@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.column;
 
 @Entity
 public class UserProfile {
@@ -87,6 +88,8 @@ public class UserProfile {
     this.updatedAt=updatedAt;
 
     public UserProfile(){
-        public UserProfile=new UserProfile();
+
     }
+    UserProfile=new UserProfile();
+    
 }
