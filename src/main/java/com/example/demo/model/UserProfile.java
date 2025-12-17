@@ -11,13 +11,14 @@ public class UserProfile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String username;
-    private String email;
     private String bio;
     private Boolean active;
     private String createdAt;
     private String updatedAt;
+
+    @column(unique=true)
+    private String username;
+    private String email;
 
     public Long getId() {
         return id;
@@ -83,5 +84,9 @@ public class UserProfile {
     this.bio=bio;
     this.active=active;
     this.createdAt=createdAt;
-    this.
+    this.updatedAt=updatedAt;
+
+    public UserProfile(){
+        public UserProfile=new UserProfile();
+    }
 }
