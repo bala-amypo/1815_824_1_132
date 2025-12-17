@@ -9,4 +9,12 @@ public class UserProfile{
     private Boolean active;
     private String createdAt;
     private String updatedAt;
+
+    public long getId(){
+        return id;
+    }
+
+    public void setId(int id){
+        this.id=
+    }
 }
