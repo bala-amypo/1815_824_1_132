@@ -14,7 +14,6 @@ public class UserProfile{
     public long getId(){
         return id;
     }
-
     public void setId(int id){
         this.id=id;
     }
@@ -22,7 +21,6 @@ public class UserProfile{
     public String getUsername(){
         return Username;
     }
-
     public void setUsername(String username){
         this.username=username;
     }
@@ -30,23 +28,39 @@ public class UserProfile{
     public String getEmail(){
         return email;
     }
-
-    public void SetEmail(){
+    public void SetEmail(String email){
         this.email=email;
     }
+
      public String getBio(){
         return bio;
     }
-
     public void SetBio(String bio){
         this.bio=bio;
     }
+
      public String getActive(){
         return active;
     }
-
     public void SetActive(Boolean active){
         this.active=active;
     }
+
+     public String getCreatedAt(){
+        return createdAt;
+    }
+    public void SetCreatedAt(Boolean createdAt){
+        this.createdAt=createdAt;
+    }
+
+     public String getUpdatedAt(){
+        return updatedAt;
+    }
+    public void SetUpdatedAt(Boolean updatedAt){
+        this.updatedAt=updatedAt;
+    }
+
+
+
 
 }
