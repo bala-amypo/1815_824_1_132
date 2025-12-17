@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.column;
+import jakarta.persistence.Column;
 
 @Entity
 public class UserProfile {
@@ -17,7 +17,7 @@ public class UserProfile {
     private String createdAt;
     private String updatedAt;
 
-    @column(unique=true)
+    @Column(unique=true)
     private String username;
     private String email;
 
@@ -78,7 +78,7 @@ public class UserProfile {
         this.updatedAt = updatedAt;
     }
 
-    public UserProfile(Long id,String username,String email,String bio,Boolean active,Timestamp createdAt,Timestamp updatedAt)
+    public UserProfile(Long id,String username,String email,String bio,Boolean active,Timestamp createdAt,Timestamp updatedAt){
     this.id=id;
     this.username=username;
     this.email=email;
@@ -87,9 +87,9 @@ public class UserProfile {
     this.createdAt=createdAt;
     this.updatedAt=updatedAt;
 
+    }
     public UserProfile(){
 
     }
-    UserProfile=new UserProfile();
     
 }
