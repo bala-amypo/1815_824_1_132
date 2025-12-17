@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
+import jakarta.persistence.PrePersist;
 
 @Entity
 public class UserProfile {
@@ -18,6 +19,9 @@ public class UserProfile {
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
+
+    @PrePersist
+    @Generate
     @Column(unique = true)
     private String username;
     private String email;
@@ -67,17 +71,17 @@ public class UserProfile {
         return createdAt;
     }
 
-    public void setCreatedAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
-    }
+    // public void setCreatedAt(Timestamp createdAt) {
+    //     this.createdAt = createdAt;
+    // }
 
     public Timestamp getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Timestamp updatedAt) {
-        this.updatedAt = updatedAt;
-    }
+    // public void setUpdatedAt(Timestamp updatedAt) {
+    //     this.updatedAt = updatedAt;
+    // }
 
     public UserProfile(Long id,String username,String email,String bio,Boolean active,Timestamp createdAt,Timestamp updatedAt){
     this.id=id;
