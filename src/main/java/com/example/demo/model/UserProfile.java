@@ -24,7 +24,7 @@ public class UserProfile{
     }
 
     public void setUsername(String username){
-        this.name=name;
+        this.username=username;
     }
 
     public String getEmail(){
@@ -32,21 +32,21 @@ public class UserProfile{
     }
 
     public void SetEmail(){
-        return email;
+        this.email=email;
     }
      public String getBio(){
         return bio;
     }
 
-    public void SetBio(){
-        return bio;
+    public void SetBio(String bio){
+        this.bio=bio;
     }
-     public String getEmail(){
-        return email;
+     public String getActive(){
+        return active;
     }
 
-    public void SetEmail(){
-        return email;
+    public void SetActive(Boolean active){
+        this.active=active;
     }
 
 }
