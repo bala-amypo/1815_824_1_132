@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import jakarta.persistence.Entity;
+import java.sql.Timestamp;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,8 +15,8 @@ public class UserProfile {
     private Long id;
     private String bio;
     private Boolean active;
-    private String createdAt;
-    private String updatedAt;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
 
     @Column(unique=true)
     private String username;
@@ -66,7 +67,7 @@ public class UserProfile {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -74,7 +75,7 @@ public class UserProfile {
         return updatedAt;
     }
 
-    public void setUpdatedAt(String updatedAt) {
+    public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
     }
 
