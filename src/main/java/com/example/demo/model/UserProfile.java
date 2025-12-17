@@ -25,7 +25,7 @@ public class UserProfile {
         this.createdAt=new Timestamp(System.currentTimeMillis());
     }
     @PrePersist
-    public void onCreate(){
+    public void onCreates(){
         this.updatedAt=new Timestamp(System.currentTimeMillis());
     }
 
