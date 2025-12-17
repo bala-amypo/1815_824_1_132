@@ -15,6 +15,18 @@ public class UserProfile{
     }
 
     public void setId(int id){
-        this.id=
+        this.id=id;
+    }
+
+    public String getUsername(){
+        return Username;
+    }
+
+    public void setUsername(String username){
+        this.name=name;
+    }
+
+    public String getEmail(){
+        return 
     }
 }
