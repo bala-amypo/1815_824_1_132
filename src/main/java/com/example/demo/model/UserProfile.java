@@ -71,7 +71,7 @@ public class UserProfile {
         this.createdAt = createdAt;
     }
 
-    public String getUpdatedAt() {
+    public  getUpdatedAt() {
         return updatedAt;
     }
 
