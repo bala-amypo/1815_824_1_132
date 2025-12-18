@@ -9,13 +9,12 @@ import jakarta.persistence.Column;
 // import jakarta.persistence.PrePersist;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import java.sql.annotations;
+import java.sql.Timestamp;
 
 
 
 @Entity
 public class UserProfile {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,7 +22,7 @@ public class UserProfile {
     private Boolean active;
     @CreationTimestamp
     private Timestamp createdAt;
-
+    @UpdateTimestamp
     private Timestamp updatedAt;
 
 
@@ -88,17 +87,17 @@ public class UserProfile {
         return createdAt;
     }
 
-    // public void setCreatedAt(Timestamp createdAt) {
-    //     this.createdAt = createdAt;
-    // }
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
 
     public Timestamp getUpdatedAt() {
         return updatedAt;
     }
 
-    // public void setUpdatedAt(Timestamp updatedAt) {
-    //     this.updatedAt = updatedAt;
-    // }
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 
     public UserProfile(Long id,String username,String email,String bio,Boolean active,Timestamp createdAt,Timestamp updatedAt){
     this.id=id;
