@@ -13,5 +13,6 @@ public class MatchRecord{
     private Timestamp matchedAt;
     private String status;
 
-    
+    public Long getId()
+
 }
