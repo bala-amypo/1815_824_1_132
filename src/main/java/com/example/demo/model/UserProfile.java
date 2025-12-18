@@ -6,7 +6,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
-import jakarta.persistence.PrePersist;
+// import jakarta.persistence.PrePersist;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Update
+import java.sql.annotations;
+
+
 
 @Entity
 public class UserProfile {
@@ -16,18 +21,20 @@ public class UserProfile {
     private Long id;
     private String bio;
     private Boolean active;
+    @CreationTimestamp
     private Timestamp createdAt;
+
     private Timestamp updatedAt;
 
 
-    @PrePersist
-    public void onCreate(){
-        this.createdAt=new Timestamp(System.currentTimeMillis());
-    }
-    @PrePersist
-    public void onCreates(){
-        this.updatedAt=new Timestamp(System.currentTimeMillis());
-    }
+    // @PrePersist
+    // public void onCreate(){
+    //     this.createdAt=new Timestamp(System.currentTimeMillis());
+    // }
+    // @PrePersist
+    // public void onCreates(){
+    //     this.updatedAt=new Timestamp(System.currentTimeMillis());
+    // }
 
     
 
