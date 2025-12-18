@@ -12,28 +12,15 @@ public class Skill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(unique = true)
-    private String name;
-
     private String category;
     private String description;
     private Boolean active;
 
-    // No-args constructor (required by JPA)
-    public Skill() {
-    }
+     @Column(unique = true)
+    private String name;
 
-    // All-args constructor
-    public Skill(Long id, String name, String category, String description, Boolean active) {
-        this.id = id;
-        this.name = name;
-        this.category = category;
-        this.description = description;
-        this.active = active;
-    }
 
-    // Getters and Setters
+   
     public Long getId() {
         return id;
     }
@@ -73,4 +60,18 @@ public class Skill {
     public void setActive(Boolean active) {
         this.active = active;
     }
+   
+    public Skill() {
+    }
+
+    
+    public Skill(Long id, String name, String category, String description, Boolean active) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.description = description;
+        this.active = active;
+    }
+    public Skill
+
 }
