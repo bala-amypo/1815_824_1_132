@@ -1,8 +1,14 @@
 package com.example.demo.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
+import java.time.LocalDateTime;
 
-    @Entity
-    public class User {
+@Entity
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,18 +25,21 @@ package com.example.demo.model;
 
     private LocalDateTime createdAt = LocalDateTime.now();
 
+    // No-args constructor required by JPA
     public User() {
     }
 
-    public User(String email, String fullName, Long id, String password) {
-        this.email = email;
-        this.fullName = fullName;
+    // All-args constructor (id optional, can be null)
+    public User(Long id, String fullName, String email, String password, String role, LocalDateTime createdAt) {
         this.id = id;
+        this.fullName = fullName;
+        this.email = email;
         this.password = password;
+        if (role != null) this.role = role;
+        if (createdAt != null) this.createdAt = createdAt;
     }
 
-    
-
+    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -78,7 +87,4 @@ package com.example.demo.model;
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
-
-    
-    
 }
