@@ -17,12 +17,11 @@ public class SkillOffer {
     private String experienceLevel;
     private Integer availableHoursPerWeek;
     private Boolean active;
-
-    // No-args constructor (required by JPA)
+ 
     public SkillOffer() {
     }
 
-    // All-args constructor
+    
     public SkillOffer(Long id,
                       String user,
                       String skill,
@@ -37,7 +36,7 @@ public class SkillOffer {
         this.active = active;
     }
 
-    // Getters and Setters
+ 
     public Long getId() {
         return id;
     }
