@@ -6,7 +6,8 @@ public class SkillOffer{
     private Long id;
     private String user;
     private String skill;
-    private String urgencyLevel;
+    private String experienceLevel;
+    private Integer availableHoursPerWeek;
     private Boolean active;
 
       public Long getId() {
@@ -26,10 +27,35 @@ public class SkillOffer{
     }
 
     public String getSkill() {
+        return skill;
+    }
+
+    public void setSkill(String skill) {
+        this.skill = skill;
+    }
+
+    public String getExperienceLevel() {
+        return experienceLevel;
+    }
+
+    public void setExperienceLevel(String experienceLevel) {
+        this.experiencedLevel = experienceLevel;
+    }
+
+    public Integer getAvailableHoursPerWeek() {
+        return availableHoursPerWeek;
+    }
+
+    public void setAvailableHoursPerWeek(String availableHoursPerWeek) {
+        this.availableHoursPerWeek = availableHoursPerWeek;
+    }
+
+    public String getUser() {
         return user;
     }
 
     public void setUser(String user) {
         this.user = user;
     }
+    public 
 }
