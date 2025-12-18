@@ -1,51 +1,76 @@
 package com.example.demo.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 @Entity
-public class Skill{
+public class Skill {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(unique = true)
+    private String name;
+
     private String category;
     private String description;
     private Boolean active;
 
-    @Column(unique  = true)
-    private String name;
+    // No-args constructor (required by JPA)
+    public Skill() {
+    }
 
-    public long getId(){
+    // All-args constructor
+    public Skill(Long id, String name, String category, String description, Boolean active) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.description = description;
+        this.active = active;
+    }
+
+    // Getters and Setters
+    public Long getId() {
         return id;
     }
-    public void setid(int id){
-        this.id=id;
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
-     public long getName(){
+    public String getName() {
         return name;
     }
-    public void setName(String name){
-        this.name=name;
+
+    public void setName(String name) {
+        this.name = name;
     }
 
-     public long getCategory(){
+    public String getCategory() {
         return category;
     }
-    public void setCategory(String category){
-        this.category=category;
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-     public long getActive(){
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Boolean getActive() {
         return active;
     }
-    public void setActive(String active){
-        this.active=active;
 
-
-        public Skill(Long id, String name, String category, String description,Boolean active)
-        this.id=id;
-        this.name=name;
-        this.category=category;
-        this.description=description;
-        this.active=active;
-
+    public void setActive(Boolean active) {
+        this.active = active;
     }
-    public Skill(){
-
 }
