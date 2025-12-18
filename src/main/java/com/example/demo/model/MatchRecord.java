@@ -34,11 +34,18 @@ public class MatchRecord{
         this.userB=userB;
     }   
 
-     public String (){
-        return userA;
+    public String getSkillOfferedByA(){
+        return skillOfferedByA;
     }
-    public void setUserA(String userA){
-        this.userA=userA;
+    public void setSkillOfferedByA(String skillOfferedByA){
+        this.skillOfferedByA=skillOfferedByA;
+    }
+
+     public String getSkillOfferedByB(){
+        return skillOfferedByB;
+    }
+    public void setSkillOfferedByA(String skillOfferedByA){
+        this.skillOfferedByA=skillOfferedByA;
     }
 
 }
