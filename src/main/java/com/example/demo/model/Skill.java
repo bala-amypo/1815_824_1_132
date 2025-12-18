@@ -40,6 +40,7 @@ public class Skill{
 
         public Skill(Long id, String name, String category, String description,Boolean active)
         this.id=id;
-        this.
+        this.name=name;
+        this.category=category;
     }
 }
