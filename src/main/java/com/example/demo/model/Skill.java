@@ -1,47 +1,35 @@
 package com.example.demo.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 
 @Entity
-public class SkillOffer {
+public class Skill {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private UserProfile user;
+    @Column(unique = true)
+    private String name;
 
-    @ManyToOne
-    private Skill skill;
-
-    @Enumerated(EnumType.STRING)
-    private ExperienceLevel experienceLevel;
-
-    private Integer availableHoursPerWeek;
-
+    private String category;
+    private String description;
     private Boolean active;
 
-    public SkillOffer() {
+    public Skill() {
     }
 
-    public SkillOffer(Long id, UserProfile user, Skill skill,
-                      ExperienceLevel experienceLevel, Integer availableHoursPerWeek, Boolean active) {
+    public Skill(Long id, String name, String category, String description, Boolean active) {
         this.id = id;
-        this.user = user;
-        this.skill = skill;
-        this.experienceLevel = experienceLevel;
-        this.availableHoursPerWeek = availableHoursPerWeek;
+        this.name = name;
+        this.category = category;
+        this.description = description;
         this.active = active;
     }
-
-    // Getters and setters
 
     public Long getId() {
         return id;
@@ -51,36 +39,28 @@ public class SkillOffer {
         this.id = id;
     }
 
-    public UserProfile getUser() {
-        return user;
+    public String getName() {
+        return name;
     }
 
-    public void setUser(UserProfile user) {
-        this.user = user;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Skill getSkill() {
-        return skill;
+    public String getCategory() {
+        return category;
     }
 
-    public void setSkill(Skill skill) {
-        this.skill = skill;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public ExperienceLevel getExperienceLevel() {
-        return experienceLevel;
+    public String getDescription() {
+        return description;
     }
 
-    public void setExperienceLevel(ExperienceLevel experienceLevel) {
-        this.experienceLevel = experienceLevel;
-    }
-
-    public Integer getAvailableHoursPerWeek() {
-        return availableHoursPerWeek;
-    }
-
-    public void setAvailableHoursPerWeek(Integer availableHoursPerWeek) {
-        this.availableHoursPerWeek = availableHoursPerWeek;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Boolean getActive() {
@@ -89,12 +69,5 @@ public class SkillOffer {
 
     public void setActive(Boolean active) {
         this.active = active;
-    }
-
-    // Enum to restrict experienceLevel values
-    public enum ExperienceLevel {
-        BEGINNER,
-        INTERMEDIATE,
-        EXPERT
     }
 }
