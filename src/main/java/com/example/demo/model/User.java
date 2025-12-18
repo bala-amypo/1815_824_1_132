@@ -1,5 +1,5 @@
-package com.example.demo.model;
+// package com.example.demo.model;
 
-public class User{
+// public class User{
 
-}
+// }
