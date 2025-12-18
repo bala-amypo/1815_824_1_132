@@ -19,20 +19,6 @@ public class UserProfile {
     private Timestamp createdAt;
     @UpdateTimestamp
     private Timestamp updatedAt;
-
-
-    @PrePersist
-    public void onCreate(){
-        this.createdAt=new Timestamp(System.currentTimeMillis());
-    }
-    @PrePersist
-    public void onCreates(){
-        this.updatedAt=new Timestamp(System.currentTimeMillis());
-    }
-
-    
-
-
     @Column(unique = true)
     private String username;
     private String email;
