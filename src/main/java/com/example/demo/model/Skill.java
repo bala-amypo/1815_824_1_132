@@ -1,4 +1,4 @@
-package com.example.demo.model.Skill;
+package com.example.demo.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,15 +12,25 @@ public class Skill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(unique = true)
+    private String name;
+
     private String category;
     private String description;
     private Boolean active;
 
-     @Column(unique = true)
-    private String name;
+    public Skill() {
+    }
 
+    public Skill(Long id, String name, String category, String description, Boolean active) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.description = description;
+        this.active = active;
+    }
 
-   
     public Long getId() {
         return id;
     }
@@ -60,17 +70,4 @@ public class Skill {
     public void setActive(Boolean active) {
         this.active = active;
     }
-   
-    public Skill() {
-    }
-
-    
-    public Skill(Long id, String name, String category, String description, Boolean active) {
-        this.id = id;
-        this.name = name;
-        this.category = category;
-        this.description = description;
-        this.active = active;
-    }
-   
 }
