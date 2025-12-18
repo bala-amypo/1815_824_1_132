@@ -10,9 +10,6 @@ import jakarta.persistence.Column;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import java.sql.Timestamp;
-
-
-
 @Entity
 public class UserProfile {
     @Id
