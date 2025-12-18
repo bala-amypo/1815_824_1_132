@@ -57,5 +57,15 @@ public class SkillOffer{
     public void setUser(String user) {
         this.user = user;
     }
-    public 
+    public SkillOffer(Long id,String user,String skill,String experiencedLevel,Integer availableHoursPerWeek,Boolean active){
+        this.id=id;
+        this.user=user;
+        this.skill;
+        this.experiencedLevel=experiencedLevel;
+        this.availableHoursPerWeek=availableHoursPerWeek;
+        this.active=active;
+    }
+    public SkillOffer(){
+        
+    }
 }
