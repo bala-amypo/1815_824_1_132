@@ -44,8 +44,22 @@ public class MatchRecord{
      public String getSkillOfferedByB(){
         return skillOfferedByB;
     }
-    public void setSkillOfferedByA(String skillOfferedByA){
-        this.skillOfferedByA=skillOfferedByA;
+    public void setSkillOfferedByB(String skillOfferedByB){
+        this.skillOfferedByB=skillOfferedByB;
+    }
+
+    public String getMatchedAt(){
+        return matchedAt;
+    }
+    public void setMatchedAt(String matchedAt){
+        this.matchedAt=matchedAt;
+    }
+    
+    public String getStatus(){
+        return status;
+    }
+    public void setMatchedAt(String matchedAt){
+        this.matchedAt=matchedAt;
     }
 
 }
