@@ -34,5 +34,8 @@ public class Skill{
     }
     public void setActive(String active){
         this.active=active;
+
+
+        public Skill(Long id, String name, String category, String description)
     }
 }
