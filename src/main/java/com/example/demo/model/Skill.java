@@ -3,10 +3,12 @@ package com.example.demo.model;
 @Entity
 public class Skill{
     private Long id;
-    private String name;
     private String category;
     private String description;
     private Boolean active;
+
+    @Column(unique  = true)
+    private String name;
 
     public long getId(){
         return id;
@@ -36,6 +38,8 @@ public class Skill{
         this.active=active;
 
 
-        public Skill(Long id, String name, String category, String description)
+        public Skill(Long id, String name, String category, String description,Boolean active)
+        this.id=id;
+        this.
     }
 }
