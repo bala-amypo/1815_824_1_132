@@ -8,7 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
 // import jakarta.persistence.PrePersist;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.Update
+import org.hibernate.annotations.UpdateTimestamp;
 import java.sql.annotations;
 
 
