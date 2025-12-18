@@ -1,16 +1,44 @@
 package com.example.demo.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 @Entity
-public class SkillOffer{
+public class SkillOffer {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String user;
     private String skill;
     private String experienceLevel;
     private Integer availableHoursPerWeek;
     private Boolean active;
 
-      public Long getId() {
+    // No-args constructor (required by JPA)
+    public SkillOffer() {
+    }
+
+    // All-args constructor
+    public SkillOffer(Long id,
+                      String user,
+                      String skill,
+                      String experienceLevel,
+                      Integer availableHoursPerWeek,
+                      Boolean active) {
+        this.id = id;
+        this.user = user;
+        this.skill = skill;
+        this.experienceLevel = experienceLevel;
+        this.availableHoursPerWeek = availableHoursPerWeek;
+        this.active = active;
+    }
+
+    // Getters and Setters
+    public Long getId() {
         return id;
     }
 
@@ -18,7 +46,7 @@ public class SkillOffer{
         this.id = id;
     }
 
-      public String getUser() {
+    public String getUser() {
         return user;
     }
 
@@ -39,33 +67,22 @@ public class SkillOffer{
     }
 
     public void setExperienceLevel(String experienceLevel) {
-        this.experiencedLevel = experienceLevel;
+        this.experienceLevel = experienceLevel;
     }
 
     public Integer getAvailableHoursPerWeek() {
         return availableHoursPerWeek;
     }
 
-    public void setAvailableHoursPerWeek(String availableHoursPerWeek) {
+    public void setAvailableHoursPerWeek(Integer availableHoursPerWeek) {
         this.availableHoursPerWeek = availableHoursPerWeek;
     }
 
-    public String getUser() {
-        return user;
+    public Boolean getActive() {
+        return active;
     }
 
-    public void setUser(String user) {
-        this.user = user;
-    }
-    public SkillOffer(Long id,String user,String skill,String experiencedLevel,Integer availableHoursPerWeek,Boolean active){
-        this.id=id;
-        this.user=user;
-        this.skill;
-        this.experiencedLevel=experiencedLevel;
-        this.availableHoursPerWeek=availableHoursPerWeek;
-        this.active=active;
-    }
-    public SkillOffer(){
-        
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 }
