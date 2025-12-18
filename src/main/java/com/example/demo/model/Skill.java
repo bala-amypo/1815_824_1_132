@@ -42,5 +42,10 @@ public class Skill{
         this.id=id;
         this.name=name;
         this.category=category;
+        this.description=description;
+        this.active=active;
+
     }
+    public Skill(){
+
 }
