@@ -4,7 +4,6 @@ import jakarta.persistence.service;
 import com.example.demo.model.SkillOffer;
 @Service
 public interface SkillOfferService{
-    public SkillOffer createRequest(SkillOffer offer);
 
     public SkillOffer getSkillOffer(SkillOffer offer);
     public SkillOffer getupdateOffer(Long id, SkillOffer offer);
