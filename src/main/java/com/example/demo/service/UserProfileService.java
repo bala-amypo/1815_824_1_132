@@ -5,9 +5,9 @@ import com.example.demo.model.UserProfile;
 @Service
 public interface UserProfileService{
 
-    public UserProfile createUser(Skill skill);
-    public Skill updateSkill(Long id, Skill skill);
-    public Skill getSkillById(Long id);
-    public Skill getAllSkills();
-    public Skill deactivateSkill(Long id);
+    public UserProfile createUser(UserProfile user);
+    public UserProfile updateUser(Long id, UserProfile user);
+    public UserProfile getUserById(Long id);
+    public UserProfile getAllUsers();
+    public UserProfile deactivateUser(Long id);
 }
