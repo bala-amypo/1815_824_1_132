@@ -5,6 +5,7 @@ import com.example.demo.model.SkillRequest;
 @Service
 public interface SkillRequestService{
     public SkillRequest createRequest(SkillRequest request);
-
-    public SkillRequest getSkillRequest(SkillRequest)
+    public SkillRequest updateRequest(Long id, SkillRequest request);
+    public SkillRequest getRequest(SkillRequest);
+    public SkillRequest getSkillRequest(SkillRequest);
 }
