@@ -5,9 +5,7 @@ import com.example.demo.model.Skill;
 @Service
 public interface SkillOfferService{
 
-    public Skill createSkill(Skill skill);
-    public Skill updateSkill(Long id, Skill skill);
-    public Skill getSkillById(Long id);
-    public Skill getAllSkills();
-    public Skill deactivateSkill(Long id);
+    public Skill register(User user);
+    public Skill findByEmail(String email);
+    
 }
