@@ -5,8 +5,8 @@ import com.example.demo.model.MatchRecord;
 @Service
 public interface MatchmakingService{
     public MatchRecord generateMatch(Long userId);
-    public getMatchById(Long id);
-    public generateMatch(Long userId);
-    public generateMatch(Long id,String status);
+    public MatchRecord getMatchById(Long id);
+    public MatchRecord getMatchesForUser(Long userId);
+    public MatchRecord updateMatchStatus(Long id,String status);
 
 }
