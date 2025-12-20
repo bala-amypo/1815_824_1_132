@@ -6,6 +6,7 @@ import com.example.demo.model.MatchRecord;
 @Service
 public interface MatchmakingService{
 @Id
+@GeneratedValue(strategy=GenerateType.IDENTITY)
     public MatchRecord generateMatch(Long userId);
     public MatchRecord getMatchById(Long id);
     public MatchRecord getMatchesForUser(Long userId);
