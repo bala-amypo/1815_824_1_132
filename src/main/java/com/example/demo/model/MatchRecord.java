@@ -21,11 +21,10 @@ public class MatchRecord {
     private Timestamp matchedAt;
     private String status;
 
-    // No-args constructor (required by JPA)
     public MatchRecord() {
     }
 
-    // Getters and Setters
+   
     public Long getId() {
         return id;
     }
