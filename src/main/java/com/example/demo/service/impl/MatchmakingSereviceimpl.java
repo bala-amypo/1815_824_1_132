@@ -1,8 +1,46 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.repository.
-import java.util.List;
+import com.example.demo.model.MatchRecord;
+import com.example.demo.repository.MatchRecordRepository;
 import com.example.demo.service.MatchmakingService;
-import com.example.demo.repositoryMatchRecordRepository;
-import org.springframework.sterotype.Service;
-import org.springframework.beans.factory.annotation
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Service
+public class MatchmakingServiceImpl implements MatchmakingService {
+
+    private final MatchRecordRepository repo;
+
+    public MatchmakingServiceImpl(MatchRecordRepository repo) {
+        this.repo = repo;
+    }
+
+    @Override
+    public MatchRecord generateMatch(Long userId) {
+        throw new RuntimeException("No match found");
+    }
+
+    @Override
+    public MatchRecord getMatchById(Long id) {
+        return repo.findById(id)
+                .orElseThrow(() -> new RuntimeException("No match found"));
+    }
+
+    @Override
+    public List<MatchRecord> getMatchesForUser(Long userId) {
+        return repo.findAll().stream()
+                .filter(m ->
+                        m.getUserA().getId().equals(userId) ||
+                        m.getUserB().getId().equals(userId))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public MatchRecord updateMatchStatus(Long id, String status) {
+        MatchRecord match = getMatchById(id);
+        match.setStatus(status);
+        return repo.save(match);
+    }
+}
