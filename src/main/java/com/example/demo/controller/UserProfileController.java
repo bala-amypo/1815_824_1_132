@@ -43,3 +43,4 @@ public class UserProfileController {
         service.deactivateUser(id);
     }
 }
+
