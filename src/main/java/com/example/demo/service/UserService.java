@@ -1,11 +1,10 @@
-package com.example.demo.service;import;
+package com.example.demo.service;
 
-import jakarta.persistence.service;
-import com.example.demo.model.Skill;
-@Service
-public interface SkillOfferService{
+import com.example.demo.model.User;
 
-    public Skill register(User user);
-    public Skill findByEmail(String email);
-    
+public interface UserService {
+
+    User register(User user);
+
+    User findByEmail(String email);
 }

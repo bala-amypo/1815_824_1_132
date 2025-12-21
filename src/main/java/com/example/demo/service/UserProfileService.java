@@ -1,13 +1,17 @@
-package com.example.demo.service;import;
+package com.example.demo.service;
 
-import jakarta.persistence.service;
 import com.example.demo.model.UserProfile;
-@Service
-public interface UserProfileService{
+import java.util.List;
 
-    public UserProfile createUser(UserProfile user);
-    public UserProfile updateUser(Long id, UserProfile user);
-    public UserProfile getUserById(Long id);
-    public UserProfile getAllUsers();
-    public UserProfile deactivateUser(Long id);
+public interface UserProfileService {
+
+    UserProfile createUser(UserProfile user);
+
+    UserProfile updateUser(Long id, UserProfile user);
+
+    UserProfile getUserById(Long id);
+
+    List<UserProfile> getAllUsers();
+
+    void deactivateUser(Long id);
 }
