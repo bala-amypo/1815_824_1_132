@@ -30,21 +30,11 @@ public class MatchRecord {
         matchedAt = new Timestamp(System.currentTimeMillis());
     }
 
-    public Long getId() { 
-    return id;
-     }
-    public UserProfile getUserA() { 
-    return userA;
-     }
-    public void setUserA(UserProfile userA) { 
-    this.userA = userA;
-     }
-    public UserProfile getUserB()  { 
-    return userB;
-     }
-    public void setUserB(UserProfile userB)
-     { this.userB = userB; 
-     }
+    public Long getId() { return id; }
+    public UserProfile getUserA() { return userA; }
+    public void setUserA(UserProfile userA) { this.userA = userA; }
+    public UserProfile getUserB() { return userB; }
+    public void setUserB(UserProfile userB) { this.userB = userB; }
     public Skill getSkillOfferedByA() { return skillOfferedByA; }
     public void setSkillOfferedByA(Skill skillOfferedByA) { this.skillOfferedByA = skillOfferedByA; }
     public Skill getSkillOfferedByB() { return skillOfferedByB; }
