@@ -1,87 +1,28 @@
 package com.example.demo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
-public class SkillOffer {
+public class Skill {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String user;
-    private String skill;
-    private String experienceLevel;
-    private Integer availableHoursPerWeek;
-    private Boolean active;
- 
-    public SkillOffer() {
-    }
+    @Column(unique = true)
+    private String name;
 
-    
-    public SkillOffer(Long id,
-                      String user,
-                      String skill,
-                      String experienceLevel,
-                      Integer availableHoursPerWeek,
-                      Boolean active) {
-        this.id = id;
-        this.user = user;
-        this.skill = skill;
-        this.experienceLevel = experienceLevel;
-        this.availableHoursPerWeek = availableHoursPerWeek;
-        this.active = active;
-    }
+    private String category;
+    private String description;
+    private Boolean active = true;
 
- 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public String getSkill() {
-        return skill;
-    }
-
-    public void setSkill(String skill) {
-        this.skill = skill;
-    }
-
-    public String getExperienceLevel() {
-        return experienceLevel;
-    }
-
-    public void setExperienceLevel(String experienceLevel) {
-        this.experienceLevel = experienceLevel;
-    }
-
-    public Integer getAvailableHoursPerWeek() {
-        return availableHoursPerWeek;
-    }
-
-    public void setAvailableHoursPerWeek(Integer availableHoursPerWeek) {
-        this.availableHoursPerWeek = availableHoursPerWeek;
-    }
-
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
+    public Long getId() { return id; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public String getCategory() { return category; }
+    public void setCategory(String category) { this.category = category; }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+    public Boolean getActive() { return active; }
+    public void setActive(Boolean active) { this.active = active; }
 }

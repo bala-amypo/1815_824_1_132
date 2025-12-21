@@ -1,46 +1,47 @@
-package com.example.demo.controller;
+package com.example.demo.model;
 
-import com.example.demo.model.UserProfile;
-import com.example.demo.service.UserProfileService;
-import org.springframework.web.bind.annotation.*;
+import jakarta.persistence.*;
+import java.sql.Timestamp;
 
-import java.util.List;
+@Entity
+public class UserProfile {
 
-@RestController
-@RequestMapping("/api/users")
-@io.swagger.v3.oas.annotations.tags.Tag(name = "User Profiles")
-public class UserProfileController {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private final UserProfileService service;
+    @Column(unique = true)
+    private String username;
 
-    public UserProfileController(UserProfileService service) {
-        this.service = service;
+    @Column(unique = true)
+    private String email;
+
+    private String bio;
+
+    private Boolean active = true;
+
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = new Timestamp(System.currentTimeMillis());
+        updatedAt = createdAt;
     }
 
-    @PostMapping
-    public UserProfile createUser(@RequestBody UserProfile user) {
-        return service.createUser(user);
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = new Timestamp(System.currentTimeMillis());
     }
 
-    @PutMapping("/{id}")
-    public UserProfile updateUser(@PathVariable Long id, @RequestBody UserProfile user) {
-        user.setId(id);
-        return service.createUser(user);
-    }
-
-    @GetMapping("/{id}")
-    public UserProfile getUser(@PathVariable Long id) {
-        return service.getUserById(id);
-    }
-
-    @GetMapping
-    public List<UserProfile> getAllUsers() {
-        return service.getAllUsers();
-    }
-
-    @PutMapping("/{id}/deactivate")
-    public void deactivate(@PathVariable Long id) {
-        service.deactivateUser(id);
-    }
+    // getters and setters
+    public Long getId() { return id; }
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+    public String getBio() { return bio; }
+    public void setBio(String bio) { this.bio = bio; }
+    public Boolean getActive() { return active; }
+    public void setActive(Boolean active) { this.active = active; }
 }
-

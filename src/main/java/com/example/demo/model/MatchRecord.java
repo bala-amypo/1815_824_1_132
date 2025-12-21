@@ -1,10 +1,6 @@
 package com.example.demo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
+import jakarta.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
@@ -14,70 +10,37 @@ public class MatchRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String userA;
-    private String userB;
-    private String skillOfferedByA;
-    private String skillOfferedByB;
+    @ManyToOne
+    private UserProfile userA;
+
+    @ManyToOne
+    private UserProfile userB;
+
+    @ManyToOne
+    private Skill skillOfferedByA;
+
+    @ManyToOne
+    private Skill skillOfferedByB;
+
     private Timestamp matchedAt;
-    private String status;
+    private String status = "PENDING";
 
-    public MatchRecord() {
+    @PrePersist
+    void onCreate() {
+        matchedAt = new Timestamp(System.currentTimeMillis());
     }
 
-   
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUserA() {
-        return userA;
-    }
-
-    public void setUserA(String userA) {
-        this.userA = userA;
-    }
-
-    public String getUserB() {
-        return userB;
-    }
-
-    public void setUserB(String userB) {
-        this.userB = userB;
-    }
-
-    public String getSkillOfferedByA() {
-        return skillOfferedByA;
-    }
-
-    public void setSkillOfferedByA(String skillOfferedByA) {
-        this.skillOfferedByA = skillOfferedByA;
-    }
-
-    public String getSkillOfferedByB() {
-        return skillOfferedByB;
-    }
-
-    public void setSkillOfferedByB(String skillOfferedByB) {
-        this.skillOfferedByB = skillOfferedByB;
-    }
-
-    public Timestamp getMatchedAt() {
-        return matchedAt;
-    }
-
-    public void setMatchedAt(Timestamp matchedAt) {
-        this.matchedAt = matchedAt;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
+    public Long getId() { 
+    return id;
+     }
+    public UserProfile getUserA() { return userA; }
+    public void setUserA(UserProfile userA) { this.userA = userA; }
+    public UserProfile getUserB() { return userB; }
+    public void setUserB(UserProfile userB) { this.userB = userB; }
+    public Skill getSkillOfferedByA() { return skillOfferedByA; }
+    public void setSkillOfferedByA(Skill skillOfferedByA) { this.skillOfferedByA = skillOfferedByA; }
+    public Skill getSkillOfferedByB() { return skillOfferedByB; }
+    public void setSkillOfferedByB(Skill skillOfferedByB) { this.skillOfferedByB = skillOfferedByB; }
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
 }
