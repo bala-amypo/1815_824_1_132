@@ -1,12 +1,17 @@
-package com.example.demo.service;import;
+package com.example.demo.service;
 
-import jakarta.persistence.service;
 import com.example.demo.model.SkillRequest;
-@Service
-public interface SkillRequestService{
-    public SkillRequest createRequest(SkillRequest request);
-    public SkillRequest updateRequest(Long id, SkillRequest request);
-    public SkillRequest getRequestById(Long id);
-    public SkillRequest getRequestByUser(Long userId);
-    public SkillRequest deactivateRequest(Long id);
+import java.util.List;
+
+public interface SkillRequestService {
+
+    SkillRequest createRequest(SkillRequest request);
+
+    SkillRequest updateRequest(Long id, SkillRequest request);
+
+    SkillRequest getRequestById(Long id);
+
+    List<SkillRequest> getRequestsByUser(Long userId);
+
+    void deactivateRequest(Long id);
 }

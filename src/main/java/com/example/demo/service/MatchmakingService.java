@@ -1,15 +1,15 @@
-package com.example.demo.service;import;
+package com.example.demo.service;
 
-import jakarta.persistence.service;
-import jakarta.persistence.*;
 import com.example.demo.model.MatchRecord;
-@Service
-public interface MatchmakingService{
-@Id
-@GeneratedValue(strategy=GenerateType.IDENTITY)
-    public MatchRecord generateMatch(Long userId);
-    public MatchRecord getMatchById(Long id);
-    public MatchRecord getMatchesForUser(Long userId);
-    public MatchRecord updateMatchStatus(Long id,String status);
+import java.util.List;
 
+public interface MatchmakingService {
+
+    MatchRecord generateMatch(Long userId);
+
+    MatchRecord getMatchById(Long id);
+
+    List<MatchRecord> getMatchesForUser(Long userId);
+
+    MatchRecord updateMatchStatus(Long id, String status);
 }

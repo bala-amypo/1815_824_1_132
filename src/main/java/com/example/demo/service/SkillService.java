@@ -1,13 +1,17 @@
-package com.example.demo.service;import;
+package com.example.demo.service;
 
-import jakarta.persistence.service;
 import com.example.demo.model.Skill;
-@Service
-public interface SkillOfferService{
+import java.util.List;
 
-    public Skill createSkill(Skill skill);
-    public Skill updateSkill(Long id, Skill skill);
-    public Skill getSkillById(Long id);
-    public Skill getAllSkills();
-    public Skill deactivateSkill(Long id);
+public interface SkillService {
+
+    Skill createSkill(Skill skill);
+
+    Skill updateSkill(Long id, Skill skill);
+
+    Skill getSkillById(Long id);
+
+    List<Skill> getAllSkills();
+
+    void deactivateSkill(Long id);
 }
