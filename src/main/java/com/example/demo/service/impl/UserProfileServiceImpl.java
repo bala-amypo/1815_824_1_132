@@ -25,6 +25,14 @@ public class UserProfileServiceImpl implements UserProfileService {
     }
 
     @Override
+    public UserProfile updateUser(Long id, UserProfile user) {
+        UserProfile existing = getUserById(id);
+        existing.setUsername(user.getUsername());
+        existing.setBio(user.getBio());
+        return repo.save(existing);
+    }
+
+    @Override
     public UserProfile getUserById(Long id) {
         return repo.findById(id)
                 .orElseThrow(() -> new RuntimeException("UserProfile not found"));
@@ -42,4 +50,3 @@ public class UserProfileServiceImpl implements UserProfileService {
         repo.save(user);
     }
 }
-

@@ -2,13 +2,14 @@ package com.example.demo.controller;
 
 import com.example.demo.model.UserProfile;
 import com.example.demo.service.UserProfileService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
-@io.swagger.v3.oas.annotations.tags.Tag(name = "User Profiles")
+@Tag(name = "User Profile")
 public class UserProfileController {
 
     private final UserProfileService service;
@@ -18,23 +19,23 @@ public class UserProfileController {
     }
 
     @PostMapping
-    public UserProfile createUser(@RequestBody UserProfile user) {
+    public UserProfile create(@RequestBody UserProfile user) {
         return service.createUser(user);
     }
 
     @PutMapping("/{id}")
-    public UserProfile updateUser(@PathVariable Long id, @RequestBody UserProfile user) {
-        user.setId(id);
-        return service.createUser(user);
+    public UserProfile update(@PathVariable Long id,
+                              @RequestBody UserProfile user) {
+        return service.updateUser(id, user); // ✅ NO setId()
     }
 
     @GetMapping("/{id}")
-    public UserProfile getUser(@PathVariable Long id) {
+    public UserProfile get(@PathVariable Long id) {
         return service.getUserById(id);
     }
 
     @GetMapping
-    public List<UserProfile> getAllUsers() {
+    public List<UserProfile> getAll() {
         return service.getAllUsers();
     }
 
@@ -43,4 +44,3 @@ public class UserProfileController {
         service.deactivateUser(id);
     }
 }
-
