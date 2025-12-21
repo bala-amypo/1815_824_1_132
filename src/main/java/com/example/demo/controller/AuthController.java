@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     private final UserService userService;
-    private final JwtUtil jwtUtil = new JwtUtil();
+    // private final JwtUtil jwtUtil = new JwtUtil();
 
     public AuthController(UserService userService) {
         this.userService = userService;
