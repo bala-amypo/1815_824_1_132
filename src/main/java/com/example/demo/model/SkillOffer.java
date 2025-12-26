@@ -9,26 +9,31 @@ public class SkillOffer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String experienceLevel;
-    private Boolean available = true;
+    private String title;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private UserProfile user;
+    private Integer availableHoursPerWeek;
 
-    @ManyToOne
-    @JoinColumn(name = "skill_id")
-    private Skill skill;
+    private boolean active;
 
-    // getters and setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    // ===== GETTERS & SETTERS =====
 
-    public String getExperienceLevel() { return experienceLevel; }
-    public void setExperienceLevel(String experienceLevel) {
-        this.experienceLevel = experienceLevel;
+    public Long getId() {
+        return id;
     }
 
-    public Boolean getAvailable() { return available; }
-    public void setAvailable(Boolean available) { this.available = available; }
+    public Integer getAvailableHoursPerWeek() {
+        return availableHoursPerWeek;
+    }
+
+    public void setAvailableHoursPerWeek(Integer availableHoursPerWeek) {
+        this.availableHoursPerWeek = availableHoursPerWeek;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 }

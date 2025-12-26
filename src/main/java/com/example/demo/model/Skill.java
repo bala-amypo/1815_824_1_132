@@ -9,18 +9,19 @@ public class Skill {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
     private String name;
 
-    private String category;
+    private String description;
 
-    // getters and setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    private boolean active;
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    // ===== GETTERS & SETTERS =====
 
-    public String getCategory() { return category; }
-    public void setCategory(String category) { this.category = category; }
+    public String getDescription() {
+        return description;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 }
