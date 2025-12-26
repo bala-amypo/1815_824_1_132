@@ -1,17 +1,16 @@
 package com.example.demo.service;
 
 import com.example.demo.model.MatchRecord;
+
 import java.util.List;
 
 public interface MatchmakingService {
 
-    MatchRecord generateMatch(Long userId);
+    MatchRecord generateMatch(Long requestId);
 
-    MatchRecord getMatchById(Long matchId);
+    MatchRecord getMatchById(Long id);
 
     List<MatchRecord> getMatchesByUser(Long userId);
 
-    List<MatchRecord> getMatchesForUser(long userId);
-
-    MatchRecord updateStatus(Long matchId, String status);
+    MatchRecord updateStatus(Long id, String status);
 }

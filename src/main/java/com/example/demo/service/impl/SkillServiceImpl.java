@@ -18,26 +18,26 @@ public class SkillServiceImpl implements SkillService {
 
     @Override
     public Skill createSkill(Skill skill) {
-        if(skill.getCategory() == null) skill.setCategory("");
-        if(skill.getDescription() == null) skill.setDescription("");
-        if(skill.isActive() == null) skill.setActive(true);
+        skill.setActive(true); // default active
         return repository.save(skill);
     }
 
     @Override
-    public Skill updateSkill(Long id, Skill skill) {
-        Skill existing = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Skill not found"));
-        existing.setName(skill.getName());
-        existing.setCategory(skill.getCategory());
-        existing.setDescription(skill.getDescription());
-        existing.setActive(skill.isActive());
-        return repository.save(existing);
+    public Skill updateSkill(Long id, Skill skillDetails) {
+        Skill skill = repository.findById(id).orElse(null);
+        if (skill != null) {
+            skill.setName(skillDetails.getName());
+            skill.setCategory(skillDetails.getCategory());
+            skill.setDescription(skillDetails.getDescription());
+            skill.setActive(skillDetails.isActive());
+            repository.save(skill);
+        }
+        return skill;
     }
 
     @Override
     public Skill getSkillById(Long id) {
-        return repository.findById(id).orElseThrow(() -> new RuntimeException("Skill not found"));
+        return repository.findById(id).orElse(null);
     }
 
     @Override
@@ -47,8 +47,10 @@ public class SkillServiceImpl implements SkillService {
 
     @Override
     public void deactivateSkill(Long id) {
-        Skill skill = getSkillById(id);
-        skill.setActive(false);
-        repository.save(skill);
+        Skill skill = repository.findById(id).orElse(null);
+        if (skill != null) {
+            skill.setActive(false);
+            repository.save(skill);
+        }
     }
 }
