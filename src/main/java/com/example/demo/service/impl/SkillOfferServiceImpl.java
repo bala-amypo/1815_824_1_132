@@ -23,22 +23,19 @@ public class SkillOfferServiceImpl implements SkillOfferService {
 
     @Override
     public SkillOffer updateOffer(Long id, SkillOffer offer) {
-        SkillOffer existing = getOfferById(id);
-        existing.setExperienceLevel(offer.getExperienceLevel());
-        existing.setAvailableHoursPerWeek(offer.getAvailableHoursPerWeek());
-        return repository.save(existing);
+        offer.setId(id);
+        return repository.save(offer);
     }
 
     @Override
     public SkillOffer getOfferById(Long id) {
         return repository.findById(id)
-                .orElseThrow(() ->
-                        new RuntimeException("Offer not found"));
+                .orElseThrow(() -> new RuntimeException("Offer not found"));
     }
 
     @Override
     public List<SkillOffer> getOffersByUser(Long userId) {
-        return repository.findAll();
+        return repository.findByUser_Id(userId);
     }
 
     @Override

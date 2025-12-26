@@ -1,41 +1,47 @@
-package com.example.demo.service;
+package com.example.demo.service.impl;
 
 import com.example.demo.model.SkillRequest;
 import com.example.demo.repository.SkillRequestRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.service.SkillRequestService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class SkillRequestServiceImpl implements SkillRequestService {
 
     private final SkillRequestRepository repository;
 
-    @Autowired
     public SkillRequestServiceImpl(SkillRequestRepository repository) {
         this.repository = repository;
     }
 
     @Override
-    public SkillRequest updateRequest(Long id, SkillRequest request) {
-        Optional<SkillRequest> optionalExisting = repository.findById(id);
+    public SkillRequest createRequest(SkillRequest request) {
+        return repository.save(request);
+    }
 
-        if (optionalExisting.isPresent()) {
-            SkillRequest existing = optionalExisting.get();
-            existing.setSkill(request.getSkill());
-            existing.setUser(request.getUser());
-            existing.setDescription(request.getDescription());
-            existing.setActive(request.getActive());
-            return repository.save(existing);
-        } else {
-            throw new RuntimeException("SkillRequest not found with id: " + id);
-        }
+    @Override
+    public SkillRequest updateRequest(Long id, SkillRequest request) {
+        request.setId(id);
+        return repository.save(request);
+    }
+
+    @Override
+    public SkillRequest getRequestById(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Request not found"));
     }
 
     @Override
     public List<SkillRequest> getRequestsByUser(Long userId) {
-        return repository.findByUserId(userId); // make sure this method exists in repository
+        return repository.findByUser_Id(userId);
+    }
+
+    @Override
+    public void deactivateRequest(Long id) {
+        SkillRequest req = getRequestById(id);
+        req.setActive(false);
+        repository.save(req);
     }
 }

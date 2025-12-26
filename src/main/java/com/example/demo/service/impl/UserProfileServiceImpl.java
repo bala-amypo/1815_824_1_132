@@ -18,26 +18,19 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     @Override
     public UserProfile createUser(UserProfile user) {
-        repository.findByEmail(user.getEmail())
-                .ifPresent(u -> {
-                    throw new RuntimeException("Email already exists");
-                });
         return repository.save(user);
     }
 
     @Override
     public UserProfile updateUser(Long id, UserProfile user) {
-        UserProfile existing = getUserById(id);
-        existing.setUsername(user.getUsername());
-        existing.setBio(user.getBio());
-        return repository.save(existing);
+        user.setId(id);
+        return repository.save(user);
     }
 
     @Override
     public UserProfile getUserById(Long id) {
         return repository.findById(id)
-                .orElseThrow(() ->
-                        new RuntimeException("UserProfile not found"));
+                .orElseThrow(() -> new RuntimeException("UserProfile not found"));
     }
 
     @Override
