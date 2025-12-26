@@ -1,7 +1,8 @@
-package com.example.demo.service;
+package com.example.demo.service.impl;
 
 import com.example.demo.model.MatchRecord;
 import com.example.demo.repository.MatchRecordRepository;
+import com.example.demo.service.MatchmakingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,6 @@ public class MatchmakingServiceImpl implements MatchmakingService {
     public MatchRecord generateMatch(Long userId) {
         MatchRecord match = new MatchRecord();
         match.setStatus("PENDING");
-        // TODO: Add logic to assign userA, userB, skills, body
         return repository.save(match);
     }
 
@@ -34,7 +34,7 @@ public class MatchmakingServiceImpl implements MatchmakingService {
 
     @Override
     public List<MatchRecord> getMatchesByUser(Long userId) {
-        return repository.findByUserA_Id(userId); // or custom query
+        return repository.findByUserA_Id(userId);
     }
 
     @Override
@@ -46,6 +46,6 @@ public class MatchmakingServiceImpl implements MatchmakingService {
 
     @Override
     public List<MatchRecord> getMatchesForUser(long userId) {
-        return repository.findByUserA_Id(userId); // matches test method
+        return repository.findByUserA_Id(userId);
     }
 }
