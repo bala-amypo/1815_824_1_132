@@ -9,26 +9,47 @@ public class SkillOffer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String experienceLevel;
-    private boolean active;
+    @ManyToOne
+    private UserProfile user;
 
+    @ManyToOne
+    private Skill skill;
+
+    private Boolean active = true;
+
+    public SkillOffer() {
+    }
+
+    // getters & setters
     public Long getId() {
         return id;
     }
 
-    public String getExperienceLevel() {
-        return experienceLevel;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setExperienceLevel(String experienceLevel) {
-        this.experienceLevel = experienceLevel;
+    public UserProfile getUser() {
+        return user;
     }
 
-    public boolean isActive() {
+    public void setUser(UserProfile user) {
+        this.user = user;
+    }
+
+    public Skill getSkill() {
+        return skill;
+    }
+
+    public void setSkill(Skill skill) {
+        this.skill = skill;
+    }
+
+    public Boolean getActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 }
