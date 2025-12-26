@@ -1,3 +1,8 @@
+package com.example.demo.model;
+
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
+
 @Entity
 public class SkillRequest {
 
@@ -14,13 +19,18 @@ public class SkillRequest {
     private UserProfile user;
 
     private String status;
-
-    private String urgencyLevel; // <-- add this field
-    private boolean active;      // <-- add this field
-
+    private String urgencyLevel;
+    private Boolean active;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
-    // Getters and Setters
+    public SkillRequest() {
+        this.active = true;
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
+    }
+
+    // Getters and setters
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -37,9 +47,12 @@ public class SkillRequest {
     public String getUrgencyLevel() { return urgencyLevel; }
     public void setUrgencyLevel(String urgencyLevel) { this.urgencyLevel = urgencyLevel; }
 
-    public boolean isActive() { return active; }
-    public void setActive(boolean active) { this.active = active; }
+    public Boolean getActive() { return active; }
+    public void setActive(Boolean active) { this.active = active; }
 
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+
+    public LocalDateTime getUpdatedAt() { return updatedAt; }
+    public void setUpdatedAt(LocalDateTime updatedAt) { this.updatedAt = updatedAt; }
 }
