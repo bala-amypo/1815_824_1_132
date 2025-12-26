@@ -5,6 +5,8 @@ import com.example.demo.repository.MatchRecordRepository;
 import com.example.demo.service.MatchmakingService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MatchmakingServiceImpl implements MatchmakingService {
 
@@ -26,8 +28,8 @@ public class MatchmakingServiceImpl implements MatchmakingService {
     }
 
     @Override
-    public MatchRecord getMatchesForUser(Long userId) {
-        return null;
+    public List<MatchRecord> getMatchesForUser(Long userId) {
+        return repo.findByUserAIdOrUserBId(userId, userId);
     }
 
     @Override
