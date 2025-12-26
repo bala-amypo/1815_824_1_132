@@ -10,20 +10,24 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
-@Tag(name = "User Profiles", description = "CRUD operations for user profiles")
+@Tag(name = "User Profiles")
 public class UserProfileController {
+
     private final UserProfileService service;
 
-    public UserProfileController(UserProfileService service) { this.service = service; }
+    public UserProfileController(UserProfileService service) {
+        this.service = service;
+    }
 
     @PostMapping
-    public ResponseEntity<UserProfile> create(@RequestBody UserProfile profile) {
-        return ResponseEntity.ok(service.createUser(profile));
+    public ResponseEntity<UserProfile> create(@RequestBody UserProfile user) {
+        return ResponseEntity.ok(service.createUser(user));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserProfile> update(@PathVariable Long id, @RequestBody UserProfile profile) {
-        return ResponseEntity.ok(service.updateUser(id, profile));
+    public ResponseEntity<UserProfile> update(@PathVariable Long id,
+                                              @RequestBody UserProfile user) {
+        return ResponseEntity.ok(service.updateUser(id, user));
     }
 
     @GetMapping("/{id}")
@@ -32,7 +36,7 @@ public class UserProfileController {
     }
 
     @GetMapping
-    public ResponseEntity<List<UserProfile>> list() {
+    public ResponseEntity<List<UserProfile>> getAll() {
         return ResponseEntity.ok(service.getAllUsers());
     }
 
