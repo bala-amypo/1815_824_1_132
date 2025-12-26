@@ -20,11 +20,9 @@ public class MatchmakingServiceImpl implements MatchmakingService {
 
     @Override
     public MatchRecord generateMatch(Long userId) {
-        // TODO: implement matchmaking logic
-        // Example stub:
         MatchRecord match = new MatchRecord();
-        match.setUserId(userId);
         match.setStatus("PENDING");
+        // TODO: Add logic to assign userA, userB, skills, body
         return repository.save(match);
     }
 
@@ -36,7 +34,7 @@ public class MatchmakingServiceImpl implements MatchmakingService {
 
     @Override
     public List<MatchRecord> getMatchesByUser(Long userId) {
-        return repository.findByUserId(userId); // make sure repository method exists
+        return repository.findByUserA_Id(userId); // or custom query
     }
 
     @Override
@@ -44,5 +42,10 @@ public class MatchmakingServiceImpl implements MatchmakingService {
         MatchRecord match = getMatchById(matchId);
         match.setStatus(status);
         return repository.save(match);
+    }
+
+    @Override
+    public List<MatchRecord> getMatchesForUser(long userId) {
+        return repository.findByUserA_Id(userId); // matches test method
     }
 }

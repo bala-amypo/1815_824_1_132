@@ -9,5 +9,9 @@ import java.util.List;
 @Repository
 public interface MatchRecordRepository extends JpaRepository<MatchRecord, Long> {
 
-    List<MatchRecord> findByUserId(Long userId);
+    // Find all matches where userA is a given user
+    List<MatchRecord> findByUserA_Id(Long userId);
+
+    // Optional: Find all matches where userB is a given user
+    List<MatchRecord> findByUserB_Id(Long userId);
 }
