@@ -3,7 +3,6 @@ package com.example.demo.service.impl;
 import com.example.demo.model.MatchRecord;
 import com.example.demo.repository.MatchRecordRepository;
 import com.example.demo.service.MatchmakingService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +12,6 @@ public class MatchmakingServiceImpl implements MatchmakingService {
 
     private final MatchRecordRepository repository;
 
-    @Autowired
     public MatchmakingServiceImpl(MatchRecordRepository repository) {
         this.repository = repository;
     }
@@ -21,6 +19,7 @@ public class MatchmakingServiceImpl implements MatchmakingService {
     @Override
     public MatchRecord generateMatch(Long userId) {
         MatchRecord match = new MatchRecord();
+        match.setUserId(userId);
         match.setStatus("PENDING");
         return repository.save(match);
     }
@@ -28,20 +27,12 @@ public class MatchmakingServiceImpl implements MatchmakingService {
     @Override
     public MatchRecord getMatchById(Long matchId) {
         return repository.findById(matchId)
-                .orElseThrow(() -> new RuntimeException("Match not found with id: " + matchId));
-    }
-
-    @Override
-    public List<MatchRecord> getMatchesByUser(Long userId) {
-        List<MatchRecord> listA = repository.findByUserA_Id(userId);
-        List<MatchRecord> listB = repository.findByUserB_Id(userId);
-        listA.addAll(listB);
-        return listA;
+                .orElseThrow(() -> new RuntimeException("Match not found"));
     }
 
     @Override
     public List<MatchRecord> getMatchesForUser(long userId) {
-        return getMatchesByUser(userId);
+        return repository.findByUserId(userId); // your repository must have findByUserId()
     }
 
     @Override
