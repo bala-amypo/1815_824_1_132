@@ -24,7 +24,7 @@ public class JwtUtil {
 
     public boolean validateToken(String token) {
         try {
-            getAllClaims(token);
+            getClaims(token);
             return true;
         } catch (Exception e) {
             return false;
@@ -32,18 +32,18 @@ public class JwtUtil {
     }
 
     public String extractEmail(String token) {
-        return getAllClaims(token).getSubject();
+        return getClaims(token).getSubject();
     }
 
     public String extractRole(String token) {
-        return getAllClaims(token).get("role", String.class);
+        return getClaims(token).get("role", String.class);
     }
 
     public Long extractUserId(String token) {
-        return getAllClaims(token).get("userId", Long.class);
+        return getClaims(token).get("userId", Long.class);
     }
 
-    private Claims getAllClaims(String token) {
+    private Claims getClaims(String token) {
         return Jwts.parser()
                 .setSigningKey(SECRET_KEY)
                 .parseClaimsJws(token)
