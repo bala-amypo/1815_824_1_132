@@ -9,20 +9,63 @@ public class MatchRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long userId;
+    @ManyToOne
+    private UserProfile userA;
 
-    private String status = "PENDING"; // default pending
+    @ManyToOne
+    private UserProfile userB;
 
-    public MatchRecord() {}
+    @ManyToOne
+    private Skill skillOfferedByA;
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    @ManyToOne
+    private Skill skillOfferedByB;
 
-    public Long getUserId() { return userId; }
-    public void setUserId(Long userId) { this.userId = userId; }
+    private String status;
 
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
+    // ===== REQUIRED GETTERS & SETTERS =====
 
-    public String getBody() { return status; } // for test case compatibility
+    public Long getId() {
+        return id;
+    }
+
+    public UserProfile getUserA() {
+        return userA;
+    }
+
+    public void setUserA(UserProfile userA) {
+        this.userA = userA;
+    }
+
+    public UserProfile getUserB() {
+        return userB;
+    }
+
+    public void setUserB(UserProfile userB) {
+        this.userB = userB;
+    }
+
+    public Skill getSkillOfferedByA() {
+        return skillOfferedByA;
+    }
+
+    public void setSkillOfferedByA(Skill skillOfferedByA) {
+        this.skillOfferedByA = skillOfferedByA;
+    }
+
+    public Skill getSkillOfferedByB() {
+        return skillOfferedByB;
+    }
+
+    public void setSkillOfferedByB(Skill skillOfferedByB) {
+        this.skillOfferedByB = skillOfferedByB;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }
