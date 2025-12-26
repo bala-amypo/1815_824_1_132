@@ -1,17 +1,17 @@
-// package com.example.demo.service;
+package com.example.demo.service;
 
-// import com.example.demo.model.SkillOffer;
-// import java.util.List;
+import com.example.demo.model.SkillOffer;
+import java.util.List;
 
-// public interface SkillOfferService {
+public interface SkillOfferService {
 
-//     SkillOffer createOffer(SkillOffer offer);
+    SkillOffer createOffer(SkillOffer offer);
 
-//     SkillOffer updateOffer(Long id, SkillOffer offer);
+    SkillOffer updateOffer(Long id, SkillOffer offer);
 
-//     SkillOffer getOfferById(Long id);
+    SkillOffer getOfferById(Long id);
 
-//     List<SkillOffer> getOffersByUser(Long userId);
+    List<SkillOffer> getOffersByUser(Long userId);
 
-//     void deactivateOffer(Long id);
-// }
+    void deactivateOffer(Long id);
+}
