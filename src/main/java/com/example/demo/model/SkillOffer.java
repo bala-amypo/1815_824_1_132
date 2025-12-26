@@ -9,31 +9,47 @@ public class SkillOffer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String title;
+    private String experienceLevel; // beginner, intermediate, expert
+    private String description;
 
-    private Integer availableHoursPerWeek;
+    @ManyToOne
+    @JoinColumn(name = "skill_id")
+    private Skill skill;
 
-    private boolean active;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserProfile user;
 
-    // ===== GETTERS & SETTERS =====
+    private Boolean active;
 
-    public Long getId() {
-        return id;
-    }
+    // Constructors
+    public SkillOffer() {}
 
-    public Integer getAvailableHoursPerWeek() {
-        return availableHoursPerWeek;
-    }
-
-    public void setAvailableHoursPerWeek(Integer availableHoursPerWeek) {
-        this.availableHoursPerWeek = availableHoursPerWeek;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
+    public SkillOffer(Long id, String experienceLevel, String description, Skill skill, UserProfile user, Boolean active) {
+        this.id = id;
+        this.experienceLevel = experienceLevel;
+        this.description = description;
+        this.skill = skill;
+        this.user = user;
         this.active = active;
     }
+
+    // Getters & Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public String getExperienceLevel() { return experienceLevel; }
+    public void setExperienceLevel(String experienceLevel) { this.experienceLevel = experienceLevel; }
+
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+
+    public Skill getSkill() { return skill; }
+    public void setSkill(Skill skill) { this.skill = skill; }
+
+    public UserProfile getUser() { return user; }
+    public void setUser(UserProfile user) { this.user = user; }
+
+    public Boolean getActive() { return active; }
+    public void setActive(Boolean active) { this.active = active; }
 }
