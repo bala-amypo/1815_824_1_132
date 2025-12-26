@@ -19,7 +19,6 @@ public class UserProfile {
 
     private Boolean active;
 
-    // Constructors
     public UserProfile() {}
 
     public UserProfile(Long id, String username, String email, String bio, Boolean active) {

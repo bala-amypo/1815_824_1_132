@@ -18,7 +18,6 @@ public class Skill {
 
     private Boolean active;
 
-    // Constructors
     public Skill() {}
 
     public Skill(Long id, String name, String category, String description, Boolean active) {

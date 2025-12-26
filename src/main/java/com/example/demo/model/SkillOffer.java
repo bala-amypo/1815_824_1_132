@@ -10,7 +10,9 @@ public class SkillOffer {
     private Long id;
 
     private String experienceLevel;
+
     private String description;
+
     private Integer availableHoursPerWeek;
 
     @ManyToOne
@@ -23,7 +25,6 @@ public class SkillOffer {
 
     private Boolean active;
 
-    // Constructors
     public SkillOffer() {}
 
     public SkillOffer(Long id, String experienceLevel, String description, Integer availableHoursPerWeek,
