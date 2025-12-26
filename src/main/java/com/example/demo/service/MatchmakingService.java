@@ -11,6 +11,5 @@ public interface MatchmakingService {
 
     List<MatchRecord> getMatchesByUser(Long userId);
 
-    // ✅ ADD THIS
     MatchRecord updateStatus(Long id, String status);
 }
