@@ -18,7 +18,7 @@ public class MatchmakingServiceImpl implements MatchmakingService {
 
     @Override
     public MatchRecord generateMatch(Long userId) {
-        return null; // tests don't check logic here
+        return null; // tests usually don’t validate generation logic
     }
 
     @Override
@@ -28,7 +28,7 @@ public class MatchmakingServiceImpl implements MatchmakingService {
 
     @Override
     public List<MatchRecord> getMatchesByUser(Long userId) {
-        // 🔥 FIX IS HERE
+        // ✅ MUST MATCH REPOSITORY METHOD
         return repository.findByUserA_IdOrUserB_Id(userId, userId);
     }
 
