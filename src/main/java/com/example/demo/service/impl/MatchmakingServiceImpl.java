@@ -3,15 +3,17 @@ package com.example.demo.service.impl;
 import com.example.demo.model.MatchRecord;
 import com.example.demo.repository.MatchRecordRepository;
 import com.example.demo.service.MatchmakingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class MatchmakingServiceImpl implements MatchmakingService {
 
     private final MatchRecordRepository repository;
 
+    @Autowired
     public MatchmakingServiceImpl(MatchRecordRepository repository) {
         this.repository = repository;
     }
@@ -19,18 +21,14 @@ public class MatchmakingServiceImpl implements MatchmakingService {
     @Override
     public MatchRecord generateMatch(Long userId) {
         MatchRecord match = new MatchRecord();
-        // For now we can just assign userA; userB can be null until matched
-        match.setUserA(new com.example.demo.model.UserProfile(){{
-            setId(userId);
-        }});
         match.setStatus("PENDING");
         return repository.save(match);
     }
 
     @Override
     public MatchRecord getMatchById(Long matchId) {
-        Optional<MatchRecord> match = repository.findById(matchId);
-        return match.orElseThrow(() -> new RuntimeException("Match not found"));
+        return repository.findById(matchId)
+                .orElseThrow(() -> new RuntimeException("Match not found with id: " + matchId));
     }
 
     @Override
@@ -39,6 +37,11 @@ public class MatchmakingServiceImpl implements MatchmakingService {
         List<MatchRecord> listB = repository.findByUserB_Id(userId);
         listA.addAll(listB);
         return listA;
+    }
+
+    @Override
+    public List<MatchRecord> getMatchesForUser(long userId) {
+        return getMatchesByUser(userId);
     }
 
     @Override
