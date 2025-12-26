@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 public class SkillRequest {
@@ -9,27 +10,31 @@ public class SkillRequest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String description;
+    // Many requests can refer to one Skill
+    @ManyToOne
+    @JoinColumn(name = "skill_id") // maps to DB column
+    private Skill skill; // <-- this field name must match repository
 
-    private Integer urgencyLevel;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserProfile user;
 
-    private boolean active;
+    private String status;
+    private LocalDateTime createdAt;
 
-    // ===== GETTERS & SETTERS =====
+    // Getters and Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public Integer getUrgencyLevel() {
-        return urgencyLevel;
-    }
+    public Skill getSkill() { return skill; }
+    public void setSkill(Skill skill) { this.skill = skill; }
 
-    public void setUrgencyLevel(Integer urgencyLevel) {
-        this.urgencyLevel = urgencyLevel;
-    }
+    public UserProfile getUser() { return user; }
+    public void setUser(UserProfile user) { this.user = user; }
 
-    public boolean isActive() {
-        return active;
-    }
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
 
-    public void setActive(boolean active) {
-        this.active = active;
-    }
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
 }

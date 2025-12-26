@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface SkillRequestRepository extends JpaRepository<SkillRequest, Long> {
 
-    // Correct method name for entity field
+    // Use entity field name "skill" and navigate to "id"
     List<SkillRequest> findBySkill_Id(Long skillId);
 }
