@@ -36,7 +36,7 @@ public class SkillController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Skill>> getAll() {
+    public ResponseEntity<List<Skill>> list() { // renamed to match test
         return ResponseEntity.ok(service.getAllSkills());
     }
 

@@ -11,7 +11,7 @@ public interface SkillService {
 
     Skill getSkillById(Long id);
 
-    List<Skill> getAllSkills();
+    List<Skill> getAllSkills(); // ensures list() in controller works
 
     void deactivateSkill(Long id);
 }

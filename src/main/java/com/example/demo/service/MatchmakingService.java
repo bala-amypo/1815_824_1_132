@@ -13,4 +13,6 @@ public interface MatchmakingService {
     List<MatchRecord> getMatchesByUser(Long userId);
 
     MatchRecord updateStatus(Long matchId, String status);
+
+    List<MatchRecord> getMatchesForUser(long userId); // added for test
 }
