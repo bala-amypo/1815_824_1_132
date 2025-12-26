@@ -9,57 +9,26 @@ public class SkillRequest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private UserProfile user;
+    private String urgencyLevel;
+    private boolean active;
 
-    @ManyToOne
-    private Skill skill;
-
-    private String description;
-
-    private Boolean active = true;
-
-    public SkillRequest() {
-    }
-
-    // getters & setters
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getUrgencyLevel() {
+        return urgencyLevel;
     }
 
-    public UserProfile getUser() {
-        return user;
+    public void setUrgencyLevel(String urgencyLevel) {
+        this.urgencyLevel = urgencyLevel;
     }
 
-    public void setUser(UserProfile user) {
-        this.user = user;
-    }
-
-    public Skill getSkill() {
-        return skill;
-    }
-
-    public void setSkill(Skill skill) {
-        this.skill = skill;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Boolean getActive() {
+    public boolean isActive() {
         return active;
     }
 
-    public void setActive(Boolean active) {
+    public void setActive(boolean active) {
         this.active = active;
     }
 }

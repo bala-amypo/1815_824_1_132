@@ -9,51 +9,61 @@ public class MatchRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // ✅ Relationship to AppUser
+    private String body;
+
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private AppUser user;
+    private UserProfile userA;
 
-    private String status;
+    @ManyToOne
+    private UserProfile userB;
 
-    private Boolean active = true;
+    @ManyToOne
+    private Skill skillOfferedByA;
 
-    // ===== Constructors =====
-    public MatchRecord() {
-    }
+    @ManyToOne
+    private Skill skillOfferedByB;
 
-    // ===== Getters =====
     public Long getId() {
         return id;
     }
 
-    public AppUser getUser() {
-        return user;
+    public String getBody() {
+        return body;
     }
 
-    public String getStatus() {
-        return status;
+    public void setBody(String body) {
+        this.body = body;
     }
 
-    public Boolean getActive() {
-        return active;
+    public UserProfile getUserA() {
+        return userA;
     }
 
-    // ===== Setters =====
-    public void setId(Long id) {
-        this.id = id;
+    public void setUserA(UserProfile userA) {
+        this.userA = userA;
     }
 
-    // ✅ THIS IS WHAT WAS MISSING
-    public void setUser(AppUser user) {
-        this.user = user;
+    public UserProfile getUserB() {
+        return userB;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setUserB(UserProfile userB) {
+        this.userB = userB;
     }
 
-    public void setActive(Boolean active) {
-        this.active = active;
+    public Skill getSkillOfferedByA() {
+        return skillOfferedByA;
+    }
+
+    public void setSkillOfferedByA(Skill skillOfferedByA) {
+        this.skillOfferedByA = skillOfferedByA;
+    }
+
+    public Skill getSkillOfferedByB() {
+        return skillOfferedByB;
+    }
+
+    public void setSkillOfferedByB(Skill skillOfferedByB) {
+        this.skillOfferedByB = skillOfferedByB;
     }
 }
