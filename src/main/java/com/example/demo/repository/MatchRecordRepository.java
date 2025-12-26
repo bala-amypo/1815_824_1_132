@@ -9,6 +9,5 @@ import java.util.List;
 @Repository
 public interface MatchRecordRepository extends JpaRepository<MatchRecord, Long> {
 
-    // Find matches where the user is either userA or userB
-    List<MatchRecord> findByUserA_IdOrUserB_Id(Long userAId, Long userBId);
+    List<MatchRecord> findByUserId(Long userId);
 }

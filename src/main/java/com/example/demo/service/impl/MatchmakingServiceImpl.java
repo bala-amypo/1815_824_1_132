@@ -1,33 +1,48 @@
-package com.example.demo.service.impl;
+package com.example.demo.service;
 
 import com.example.demo.model.MatchRecord;
 import com.example.demo.repository.MatchRecordRepository;
-import com.example.demo.service.MatchmakingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MatchmakingServiceImpl implements MatchmakingService {
 
-    private final MatchRecordRepository matchRepo;
+    private final MatchRecordRepository repository;
 
-    public MatchmakingServiceImpl(MatchRecordRepository matchRepo) {
-        this.matchRepo = matchRepo;
+    @Autowired
+    public MatchmakingServiceImpl(MatchRecordRepository repository) {
+        this.repository = repository;
     }
 
     @Override
-    public List<MatchRecord> getMatchesForUser(Long userId) {
-        return matchRepo.findByUserA_IdOrUserB_Id(userId, userId);
+    public MatchRecord generateMatch(Long userId) {
+        // TODO: implement matchmaking logic
+        // Example stub:
+        MatchRecord match = new MatchRecord();
+        match.setUserId(userId);
+        match.setStatus("PENDING");
+        return repository.save(match);
     }
 
-    // ✅ REQUIRED METHOD (THIS FIXES THE ERROR)
+    @Override
+    public MatchRecord getMatchById(Long matchId) {
+        Optional<MatchRecord> match = repository.findById(matchId);
+        return match.orElseThrow(() -> new RuntimeException("Match not found with id: " + matchId));
+    }
+
+    @Override
+    public List<MatchRecord> getMatchesByUser(Long userId) {
+        return repository.findByUserId(userId); // make sure repository method exists
+    }
+
     @Override
     public MatchRecord updateStatus(Long matchId, String status) {
-        MatchRecord record = matchRepo.findById(matchId)
-                .orElseThrow(() -> new RuntimeException("Match not found"));
-
-        record.setStatus(status);
-        return matchRepo.save(record);
+        MatchRecord match = getMatchById(matchId);
+        match.setStatus(status);
+        return repository.save(match);
     }
 }
