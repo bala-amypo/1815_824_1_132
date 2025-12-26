@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface MatchRecordRepository extends JpaRepository<MatchRecord, Long> {
 
-    List<MatchRecord> findByUserAIdOrUserBId(Long userAId, Long userBId);
+    List<MatchRecord> findByUserId(Long userId);
 }

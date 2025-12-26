@@ -10,42 +10,36 @@ import java.util.List;
 @Service
 public class MatchmakingServiceImpl implements MatchmakingService {
 
-    private final MatchRecordRepository repo;
+    private final MatchRecordRepository repository;
 
-    public MatchmakingServiceImpl(MatchRecordRepository repo) {
-        this.repo = repo;
+    public MatchmakingServiceImpl(MatchRecordRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public MatchRecord generateMatch(Long userId) {
-        throw new RuntimeException("No match found");
+        MatchRecord match = new MatchRecord();
+        match.setUserId(userId);
+        match.setStatus("PENDING");
+        return repository.save(match);
     }
 
     @Override
     public MatchRecord getMatchById(Long id) {
-        return repo.findById(id)
-                .orElseThrow(() -> new RuntimeException("No match found"));
+        return repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Match not found"));
     }
 
     @Override
-    public List<MatchRecord> getMatchesForUser(Long userId) {
-        return repo.findByUserAIdOrUserBId(userId, userId);
+    public List<MatchRecord> getMatchesByUser(Long userId) {
+        return repository.findByUserId(userId);
     }
 
+    // ✅ FIXED METHOD
     @Override
-    public MatchRecord updateMatchStatus(Long id, String status) {
-        MatchRecord m = getMatchById(id);
-        m.setStatus(status);
-        return repo.save(m);
+    public MatchRecord updateStatus(Long id, String status) {
+        MatchRecord match = getMatchById(id);
+        match.setStatus(status);
+        return repository.save(match);
     }
-    @Override
-public MatchRecord updateStatus(Long id, String status) {
-    MatchRecord match = repository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Match not found"));
-
-    match.setStatus(status);
-    return repository.save(match);
-}
-
-    
 }

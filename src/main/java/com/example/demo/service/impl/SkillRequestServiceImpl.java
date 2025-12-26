@@ -18,19 +18,21 @@ public class SkillRequestServiceImpl implements SkillRequestService {
 
     @Override
     public SkillRequest createRequest(SkillRequest request) {
+        request.setActive(true);
         return repository.save(request);
     }
 
     @Override
     public SkillRequest updateRequest(Long id, SkillRequest request) {
-        request.setId(id);
-        return repository.save(request);
+        SkillRequest existing = getRequestById(id);
+        existing.setDescription(request.getDescription());
+        return repository.save(existing);
     }
 
     @Override
     public SkillRequest getRequestById(Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Request not found"));
+                .orElseThrow(() -> new RuntimeException("SkillRequest not found"));
     }
 
     @Override
@@ -38,10 +40,16 @@ public class SkillRequestServiceImpl implements SkillRequestService {
         return repository.findByUser_Id(userId);
     }
 
+    // ✅ FIXED METHOD
+    @Override
+    public List<SkillRequest> getAllRequests() {
+        return repository.findAll();
+    }
+
     @Override
     public void deactivateRequest(Long id) {
-        SkillRequest req = getRequestById(id);
-        req.setActive(false);
-        repository.save(req);
+        SkillRequest request = getRequestById(id);
+        request.setActive(false);
+        repository.save(request);
     }
 }
