@@ -3,18 +3,26 @@ package com.example.demo.dto;
 public class LoginResponse {
 
     private String token;
-    private String email;
     private String role;
+    private String email;
 
+    // ✅ Default constructor (REQUIRED)
     public LoginResponse() {
     }
 
-    public LoginResponse(String token, String email, String role) {
+    // ✅ Single-arg constructor (fixes error)
+    public LoginResponse(String token) {
         this.token = token;
-        this.email = email;
-        this.role = role;
     }
 
+    // ✅ Full constructor
+    public LoginResponse(String token, String role, String email) {
+        this.token = token;
+        this.role = role;
+        this.email = email;
+    }
+
+    // getters & setters
     public String getToken() {
         return token;
     }
@@ -23,19 +31,19 @@ public class LoginResponse {
         this.token = token;
     }
 
-    public String getEmail() {
-        return email;
-    }
-    
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getRole() {
         return role;
     }
-    
+
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

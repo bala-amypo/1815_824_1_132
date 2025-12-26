@@ -1,7 +1,6 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 public class MatchRecord {
@@ -11,24 +10,57 @@ public class MatchRecord {
     private Long id;
 
     @ManyToOne
-    private UserProfile userA;
+    private UserProfile requester;
 
     @ManyToOne
-    private UserProfile userB;
+    private UserProfile provider;
 
     @ManyToOne
-    private Skill skillA;
-
-    @ManyToOne
-    private Skill skillB;
+    private Skill skill;
 
     private String status;
-    private LocalDateTime matchedAt = LocalDateTime.now();
 
-    // getters and setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public MatchRecord() {
+    }
 
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
+    // getters & setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public UserProfile getRequester() {
+        return requester;
+    }
+
+    public void setRequester(UserProfile requester) {
+        this.requester = requester;
+    }
+
+    public UserProfile getProvider() {
+        return provider;
+    }
+
+    public void setProvider(UserProfile provider) {
+        this.provider = provider;
+    }
+
+    public Skill getSkill() {
+        return skill;
+    }
+
+    public void setSkill(Skill skill) {
+        this.skill = skill;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

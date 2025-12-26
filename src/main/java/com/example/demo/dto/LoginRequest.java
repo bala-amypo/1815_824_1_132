@@ -8,6 +8,12 @@ public class LoginRequest {
     public LoginRequest() {
     }
 
+    public LoginRequest(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+    // getters & setters
     public String getEmail() {
         return email;
     }
@@ -19,7 +25,7 @@ public class LoginRequest {
     public String getPassword() {
         return password;
     }
-    
+
     public void setPassword(String password) {
         this.password = password;
     }
