@@ -1,43 +1,22 @@
 package com.example.demo.security;
 
-import io.jsonwebtoken.*;
-import org.springframework.stereotype.Component;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
+import java.security.Key;
 import java.util.Date;
 
-@Component   // ✅ This makes it a Spring Bean
 public class JwtUtil {
 
-    private final String SECRET_KEY = "secret-key-123456"; // replace with env var in prod
+    private static final String SECRET = "mySuperSecretKeyForJwtTesting1234567890";
+    private static final Key KEY = Keys.hmacShaKeyFor(SECRET.getBytes());
 
-    public String generateToken(String email, String role, Long userId) {
+    public String generateToken(String email) {
         return Jwts.builder()
                 .setSubject(email)
-                .claim("role", role)
-                .claim("userId", userId)
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000*60*60*10)) // 10 hours
-                .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60)) // 1 hour
+                .signWith(KEY, SignatureAlgorithm.HS256)
                 .compact();
-    }
-
-    public boolean validateToken(String token) {
-        try {
-            Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token);
-            return true;
-        } catch (JwtException e) {
-            return false;
-        }
-    }
-
-    public String extractEmail(String token) {
-        return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody().getSubject();
-    }
-
-    public String extractRole(String token) {
-        return (String) Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody().get("role");
-    }
-
-    public Long extractUserId(String token) {
-        return ((Number) Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody().get("userId")).longValue();
     }
 }

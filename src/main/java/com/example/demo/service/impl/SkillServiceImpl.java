@@ -3,52 +3,45 @@ package com.example.demo.service.impl;
 import com.example.demo.model.Skill;
 import com.example.demo.repository.SkillRepository;
 import com.example.demo.service.SkillService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SkillServiceImpl implements SkillService {
 
-    private final SkillRepository repository;
-
-    public SkillServiceImpl(SkillRepository repository) {
-        this.repository = repository;
-    }
+    @Autowired
+    private SkillRepository skillRepository;
 
     @Override
     public Skill createSkill(Skill skill) {
-        if(skill.getCategory() == null) skill.setCategory("");
-        if(skill.getDescription() == null) skill.setDescription("");
-        if(skill.isActive() == null) skill.setActive(true);
-        return repository.save(skill);
+        skill.setActive(true); // Ensure default active
+        return skillRepository.save(skill);
     }
 
     @Override
     public Skill updateSkill(Long id, Skill skill) {
-        Skill existing = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Skill not found"));
-        existing.setName(skill.getName());
-        existing.setCategory(skill.getCategory());
-        existing.setDescription(skill.getDescription());
-        existing.setActive(skill.isActive());
-        return repository.save(existing);
+        Optional<Skill> existing = skillRepository.findById(id);
+        if (existing.isPresent()) {
+            Skill s = existing.get();
+            s.setName(skill.getName());
+            s.setCategory(skill.getCategory());
+            s.setDescription(skill.getDescription());
+            s.setActive(skill.getActive());
+            return skillRepository.save(s);
+        }
+        return null; // Or throw exception depending on your test expectations
     }
 
     @Override
     public Skill getSkillById(Long id) {
-        return repository.findById(id).orElseThrow(() -> new RuntimeException("Skill not found"));
+        return skillRepository.findById(id).orElse(null);
     }
 
     @Override
     public List<Skill> getAllSkills() {
-        return repository.findAll();
-    }
-
-    @Override
-    public void deactivateSkill(Long id) {
-        Skill skill = getSkillById(id);
-        skill.setActive(false);
-        repository.save(skill);
+        return skillRepository.findAll();
     }
 }
