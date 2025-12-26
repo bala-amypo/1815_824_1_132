@@ -1,19 +1,34 @@
-package com.example.demo.config;
+package com.example.demo.controller;
 
-import io.swagger.v3.oas.models.OpenAPI;
-import io.swagger.v3.oas.models.info.Info;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import com.example.demo.model.User;
+import com.example.demo.security.JwtUtil;
+import com.example.demo.service.UserService;
+import org.springframework.web.bind.annotation.*;
 
-@Configuration
-public class OpenApiConfig {
+@RestController
+@RequestMapping("/auth")
+public class AuthController {
 
-    @Bean
-    public OpenAPI customOpenAPI() {
-        return new OpenAPI()
-                .info(new Info()
-                        .title("Skill Barter Matchmaking API")
-                        .version("1.0")
-                        .description("JWT-secured Skill Barter Platform"));
+    private final UserService userService;
+    private final JwtUtil jwtUtil;
+
+    public AuthController(UserService userService, JwtUtil jwtUtil) {
+        this.userService = userService;
+        this.jwtUtil = jwtUtil;
+    }
+
+    @PostMapping("/register")
+    public User register(@RequestBody User user) {
+        return userService.register(user);
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestBody User user) {
+        User dbUser = userService.findByEmail(user.getEmail());
+        return jwtUtil.generateToken(
+                dbUser.getEmail(),
+                dbUser.getRole(),
+                dbUser.getId()
+        );
     }
 }
