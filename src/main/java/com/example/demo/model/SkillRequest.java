@@ -9,14 +9,20 @@ public class SkillRequest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String urgency;
+
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private UserProfile user;
 
     @ManyToOne
+    @JoinColumn(name = "skill_id")
     private Skill skill;
 
-    private String urgencyLevel;
-    private Boolean active = true;
+    // getters and setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    // getters & setters
+    public String getUrgency() { return urgency; }
+    public void setUrgency(String urgency) { this.urgency = urgency; }
 }
