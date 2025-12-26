@@ -10,10 +10,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/skills")
-@Tag(name = "Skills", description = "CRUD operations for skills")
+@Tag(name = "Skills")
 public class SkillController {
+
     private final SkillService service;
-    public SkillController(SkillService service) { this.service = service; }
+
+    public SkillController(SkillService service) {
+        this.service = service;
+    }
 
     @PostMapping
     public ResponseEntity<Skill> create(@RequestBody Skill skill) {
@@ -21,7 +25,8 @@ public class SkillController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Skill> update(@PathVariable Long id, @RequestBody Skill skill) {
+    public ResponseEntity<Skill> update(@PathVariable Long id,
+                                        @RequestBody Skill skill) {
         return ResponseEntity.ok(service.updateSkill(id, skill));
     }
 
@@ -31,7 +36,7 @@ public class SkillController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Skill>> list() {
+    public ResponseEntity<List<Skill>> getAll() {
         return ResponseEntity.ok(service.getAllSkills());
     }
 
