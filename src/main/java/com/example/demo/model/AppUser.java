@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "app_users")
@@ -14,10 +15,11 @@ public class AppUser {
     private String email;
 
     private String password;
-
     private String role;
-
     private Boolean active = true;
+
+    // ✅ REQUIRED BY TEST
+    private LocalDateTime createdAt;
 
     public AppUser() {
     }
@@ -28,7 +30,6 @@ public class AppUser {
         this.role = role;
     }
 
-    // getters & setters
     public Long getId() {
         return id;
     }
@@ -67,5 +68,14 @@ public class AppUser {
 
     public void setActive(Boolean active) {
         this.active = active;
+    }
+
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
+import java.sql.Timestamp;
 
 @Entity
 public class UserProfile {
@@ -10,10 +11,12 @@ public class UserProfile {
     private Long id;
 
     private String username;
-
     private String email;
-
     private Boolean active = true;
+
+    // ✅ REQUIRED BY TEST
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
 
     @OneToOne
     private AppUser user;
@@ -21,7 +24,6 @@ public class UserProfile {
     public UserProfile() {
     }
 
-    // getters & setters
     public Long getId() {
         return id;
     }
@@ -46,7 +48,8 @@ public class UserProfile {
         this.email = email;
     }
 
-    public Boolean getActive() {
+    // ✅ TEST EXPECTS isActive()
+    public Boolean isActive() {
         return active;
     }
 
@@ -60,5 +63,22 @@ public class UserProfile {
 
     public void setUser(AppUser user) {
         this.user = user;
+    }
+
+    // ✅ REQUIRED BY TEST
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }
