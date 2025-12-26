@@ -23,7 +23,7 @@ public class MatchRecord {
 
     private String status;
 
-    // Getters & Setters
+    // Getters and Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -34,10 +34,10 @@ public class MatchRecord {
     public void setUserB(UserProfile userB) { this.userB = userB; }
 
     public Skill getSkillOfferedByA() { return skillOfferedByA; }
-    public void setSkillOfferedByA(Skill skillOfferedByA) { this.skillOfferedByA = skillOfferedByA; }
+    public void setSkillOfferedByA(Skill skill) { this.skillOfferedByA = skill; }
 
     public Skill getSkillOfferedByB() { return skillOfferedByB; }
-    public void setSkillOfferedByB(Skill skillOfferedByB) { this.skillOfferedByB = skillOfferedByB; }
+    public void setSkillOfferedByB(Skill skill) { this.skillOfferedByB = skill; }
 
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
