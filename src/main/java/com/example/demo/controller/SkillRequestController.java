@@ -2,44 +2,42 @@ package com.example.demo.controller;
 
 import com.example.demo.model.SkillRequest;
 import com.example.demo.service.SkillRequestService;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/skill-requests")
+@Tag(name = "Skill Requests", description = "CRUD operations for skill requests")
 public class SkillRequestController {
-
     private final SkillRequestService service;
-
-    public SkillRequestController(SkillRequestService service) {
-        this.service = service;
-    }
+    public SkillRequestController(SkillRequestService service) { this.service = service; }
 
     @PostMapping
-    public SkillRequest createRequest(@RequestBody SkillRequest request) {
-        return service.createRequest(request);
+    public ResponseEntity<SkillRequest> create(@RequestBody SkillRequest req) {
+        return ResponseEntity.ok(service.createRequest(req));
     }
 
     @PutMapping("/{id}")
-    public SkillRequest updateRequest(
-            @PathVariable Long id,
-            @RequestBody SkillRequest request) {
-        return service.updateRequest(id, request);
+    public ResponseEntity<SkillRequest> update(@PathVariable Long id, @RequestBody SkillRequest req) {
+        return ResponseEntity.ok(service.updateRequest(id, req));
     }
 
     @GetMapping("/{id}")
-    public SkillRequest getRequest(@PathVariable Long id) {
-        return service.getRequestById(id);
+    public ResponseEntity<SkillRequest> get(@PathVariable Long id) {
+        return ResponseEntity.ok(service.getRequestById(id));
     }
 
     @GetMapping("/user/{userId}")
-    public List<SkillRequest> getRequestsByUser(@PathVariable Long userId) {
-        return service.getRequestsByUser(userId);
+    public ResponseEntity<List<SkillRequest>> getByUser(@PathVariable Long userId) {
+        return ResponseEntity.ok(service.getRequestsByUser(userId));
     }
 
     @PutMapping("/{id}/deactivate")
-    public void deactivateRequest(@PathVariable Long id) {
+    public ResponseEntity<Void> deactivate(@PathVariable Long id) {
         service.deactivateRequest(id);
+        return ResponseEntity.ok().build();
     }
 }
