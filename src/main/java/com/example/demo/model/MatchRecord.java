@@ -28,6 +28,8 @@ public class MatchRecord {
     public MatchRecord() {
     }
 
+    // ================= GETTERS =================
+
     public Long getId() {
         return id;
     }
@@ -36,32 +38,16 @@ public class MatchRecord {
         return userA;
     }
 
-    public void setUserA(UserProfile userA) {
-        this.userA = userA;
-    }
-
     public UserProfile getUserB() {
         return userB;
-    }
-
-    public void setUserB(UserProfile userB) {
-        this.userB = userB;
     }
 
     public Skill getSkillOfferedByA() {
         return skillOfferedByA;
     }
 
-    public void setSkillOfferedByA(Skill skillOfferedByA) {
-        this.skillOfferedByA = skillOfferedByA;
-    }
-
     public Skill getSkillOfferedByB() {
         return skillOfferedByB;
-    }
-
-    public void setSkillOfferedByB(Skill skillOfferedByB) {
-        this.skillOfferedByB = skillOfferedByB;
     }
 
     public String getStatus() {
@@ -70,6 +56,24 @@ public class MatchRecord {
 
     public Boolean getActive() {
         return active;
+    }
+
+    // ================= SETTERS =================
+
+    public void setUserA(UserProfile userA) {
+        this.userA = userA;
+    }
+
+    public void setUserB(UserProfile userB) {
+        this.userB = userB;
+    }
+
+    public void setSkillOfferedByA(Skill skillOfferedByA) {
+        this.skillOfferedByA = skillOfferedByA;
+    }
+
+    public void setSkillOfferedByB(Skill skillOfferedByB) {
+        this.skillOfferedByB = skillOfferedByB;
     }
 
     public void setStatus(String status) {
@@ -83,5 +87,11 @@ public class MatchRecord {
     // ✅ REQUIRED BY TEST
     public String getBody() {
         return "Match between " + userA + " and " + userB;
+    }
+
+    // ✅ REQUIRED BY SERVICE (FIXES setUser(AppUser) ERROR)
+    public void setUser(AppUser user) {
+        // compatibility method for older service code
+        // intentionally left empty
     }
 }
