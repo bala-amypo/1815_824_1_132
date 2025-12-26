@@ -1,7 +1,6 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import java.sql.Timestamp;
 
 @Entity
 public class MatchRecord {
@@ -10,20 +9,23 @@ public class MatchRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private UserProfile userA;
+    private String status;
 
-    @ManyToOne
-    private UserProfile userB;
+    // getters
+    public Long getId() {
+        return id;
+    }
 
-    @ManyToOne
-    private Skill skillOfferedByA;
+    public String getStatus() {
+        return status;
+    }
 
-    @ManyToOne
-    private Skill skillOfferedByB;
+    // setters ✅ REQUIRED
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    private Timestamp matchedAt;
-    private String status = "PENDING";
-
-    // getters & setters
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }
