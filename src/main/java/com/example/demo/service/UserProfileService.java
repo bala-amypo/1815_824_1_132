@@ -1,17 +1,17 @@
-package com.example.demo.service;
+// package com.example.demo.service;
 
-import com.example.demo.model.UserProfile;
-import java.util.List;
+// import com.example.demo.model.UserProfile;
+// import java.util.List;
 
-public interface UserProfileService {
+// public interface UserProfileService {
 
-    UserProfile createUser(UserProfile user);
+//     UserProfile createUser(UserProfile user);
 
-    UserProfile updateUser(Long id, UserProfile user);
+//     UserProfile updateUser(Long id, UserProfile user);
 
-    UserProfile getUserById(Long id);
+//     UserProfile getUserById(Long id);
 
-    List<UserProfile> getAllUsers();
+//     List<UserProfile> getAllUsers();
 
-    void deactivateUser(Long id);
-}
+//     void deactivateUser(Long id);
+// }
