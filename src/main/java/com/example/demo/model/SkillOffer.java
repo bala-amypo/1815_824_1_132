@@ -15,12 +15,14 @@ public class SkillOffer {
     @ManyToOne
     private Skill skill;
 
+    // ✅ REQUIRED BY TEST
+    private String experienceLevel;
+
     private Boolean active = true;
 
     public SkillOffer() {
     }
 
-    // getters & setters
     public Long getId() {
         return id;
     }
@@ -45,7 +47,17 @@ public class SkillOffer {
         this.skill = skill;
     }
 
-    public Boolean getActive() {
+    // ✅ REQUIRED BY TEST
+    public String getExperienceLevel() {
+        return experienceLevel;
+    }
+
+    public void setExperienceLevel(String experienceLevel) {
+        this.experienceLevel = experienceLevel;
+    }
+
+    // ✅ TEST EXPECTS isActive()
+    public Boolean isActive() {
         return active;
     }
 

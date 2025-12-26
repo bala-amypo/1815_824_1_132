@@ -9,26 +9,59 @@ public class MatchRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // ✅ Relationship to AppUser
+    // ✅ REQUIRED BY TEST
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private AppUser user;
+    private UserProfile userA;
+
+    @ManyToOne
+    private UserProfile userB;
+
+    @ManyToOne
+    private Skill skillOfferedByA;
+
+    @ManyToOne
+    private Skill skillOfferedByB;
 
     private String status;
-
     private Boolean active = true;
 
-    // ===== Constructors =====
     public MatchRecord() {
     }
 
-    // ===== Getters =====
     public Long getId() {
         return id;
     }
 
-    public AppUser getUser() {
-        return user;
+    public UserProfile getUserA() {
+        return userA;
+    }
+
+    public void setUserA(UserProfile userA) {
+        this.userA = userA;
+    }
+
+    public UserProfile getUserB() {
+        return userB;
+    }
+
+    public void setUserB(UserProfile userB) {
+        this.userB = userB;
+    }
+
+    public Skill getSkillOfferedByA() {
+        return skillOfferedByA;
+    }
+
+    public void setSkillOfferedByA(Skill skillOfferedByA) {
+        this.skillOfferedByA = skillOfferedByA;
+    }
+
+    public Skill getSkillOfferedByB() {
+        return skillOfferedByB;
+    }
+
+    public void setSkillOfferedByB(Skill skillOfferedByB) {
+        this.skillOfferedByB = skillOfferedByB;
     }
 
     public String getStatus() {
@@ -39,21 +72,16 @@ public class MatchRecord {
         return active;
     }
 
-    // ===== Setters =====
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    // ✅ THIS IS WHAT WAS MISSING
-    public void setUser(AppUser user) {
-        this.user = user;
-    }
-
     public void setStatus(String status) {
         this.status = status;
     }
 
     public void setActive(Boolean active) {
         this.active = active;
+    }
+
+    // ✅ REQUIRED BY TEST
+    public String getBody() {
+        return "Match between " + userA + " and " + userB;
     }
 }

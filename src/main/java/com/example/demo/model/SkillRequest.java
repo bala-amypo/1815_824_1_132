@@ -17,12 +17,14 @@ public class SkillRequest {
 
     private String description;
 
+    // ✅ REQUIRED BY TEST
+    private String urgencyLevel;
+
     private Boolean active = true;
 
     public SkillRequest() {
     }
 
-    // getters & setters
     public Long getId() {
         return id;
     }
@@ -55,7 +57,17 @@ public class SkillRequest {
         this.description = description;
     }
 
-    public Boolean getActive() {
+    // ✅ REQUIRED BY TEST
+    public String getUrgencyLevel() {
+        return urgencyLevel;
+    }
+
+    public void setUrgencyLevel(String urgencyLevel) {
+        this.urgencyLevel = urgencyLevel;
+    }
+
+    // ✅ TEST EXPECTS isActive()
+    public Boolean isActive() {
         return active;
     }
 

@@ -13,15 +13,12 @@ public class Skill {
     private String name;
 
     private String category;
-
     private String description;
-
     private Boolean active = true;
 
     public Skill() {
     }
 
-    // getters & setters
     public Long getId() {
         return id;
     }
@@ -54,7 +51,8 @@ public class Skill {
         this.description = description;
     }
 
-    public Boolean getActive() {
+    // ✅ TEST EXPECTS isActive()
+    public Boolean isActive() {
         return active;
     }
 
