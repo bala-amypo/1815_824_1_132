@@ -38,4 +38,14 @@ public class MatchmakingServiceImpl implements MatchmakingService {
         m.setStatus(status);
         return repo.save(m);
     }
+    @Override
+public MatchRecord updateStatus(Long id, String status) {
+    MatchRecord match = repository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Match not found"));
+
+    match.setStatus(status);
+    return repository.save(match);
+}
+
+    
 }

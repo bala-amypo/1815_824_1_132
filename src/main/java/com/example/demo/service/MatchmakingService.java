@@ -9,7 +9,8 @@ public interface MatchmakingService {
 
     MatchRecord getMatchById(Long id);
 
-    List<MatchRecord> getMatchesForUser(Long userId);
+    List<MatchRecord> getMatchesByUser(Long userId);
 
-    MatchRecord updateMatchStatus(Long id, String status);
+    // ✅ ADD THIS
+    MatchRecord updateStatus(Long id, String status);
 }
