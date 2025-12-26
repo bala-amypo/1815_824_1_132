@@ -41,9 +41,4 @@ public class MatchRecord {
 
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
-
-    // Add method expected by test
-    public MatchRecord getBody() {
-        return this; // Test probably calls getBody() to get the record
-    }
 }

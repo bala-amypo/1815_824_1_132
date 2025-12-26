@@ -32,9 +32,4 @@ public class Skill {
 
     public Boolean getActive() { return active; }
     public void setActive(Boolean active) { this.active = active; }
-
-    // Add method expected by test
-    public boolean isActive() {
-        return active != null && active;
-    }
 }
