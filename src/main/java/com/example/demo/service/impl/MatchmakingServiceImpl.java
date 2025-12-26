@@ -18,7 +18,16 @@ public class MatchmakingServiceImpl implements MatchmakingService {
 
     @Override
     public List<MatchRecord> getMatchesForUser(Long userId) {
-        // ✅ FIXED METHOD CALL
         return matchRepo.findByUserA_IdOrUserB_Id(userId, userId);
+    }
+
+    // ✅ REQUIRED METHOD (THIS FIXES THE ERROR)
+    @Override
+    public MatchRecord updateStatus(Long matchId, String status) {
+        MatchRecord record = matchRepo.findById(matchId)
+                .orElseThrow(() -> new RuntimeException("Match not found"));
+
+        record.setStatus(status);
+        return matchRepo.save(record);
     }
 }
