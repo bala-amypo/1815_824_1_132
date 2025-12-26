@@ -11,52 +11,32 @@ import java.util.Optional;
 @Service
 public class SkillRequestServiceImpl implements SkillRequestService {
 
-    private final SkillRequestRepository skillRequestRepository;
+    private final SkillRequestRepository repository;
 
-    // Constructor injection
-    public SkillRequestServiceImpl(SkillRequestRepository skillRequestRepository) {
-        this.skillRequestRepository = skillRequestRepository;
-    }
-
-    @Override
-    public List<SkillRequest> getAllRequests() {
-        return skillRequestRepository.findAll();
-    }
-
-    @Override
-    public Optional<SkillRequest> getRequestById(Long id) {
-        return skillRequestRepository.findById(id);
+    public SkillRequestServiceImpl(SkillRequestRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public SkillRequest createRequest(SkillRequest request) {
-        // Initialize default values if needed
-        if (request.getActive() == null) {
-            request.setActive(true);
-        }
-        return skillRequestRepository.save(request);
+        return repository.save(request);
     }
 
     @Override
-    public SkillRequest updateRequest(Long id, SkillRequest updatedRequest) {
-        Optional<SkillRequest> optionalRequest = skillRequestRepository.findById(id);
-        if (optionalRequest.isPresent()) {
-            SkillRequest existingRequest = optionalRequest.get();
-            existingRequest.setStatus(updatedRequest.getStatus());
-            existingRequest.setUrgencyLevel(updatedRequest.getUrgencyLevel());
-            existingRequest.setActive(updatedRequest.getActive());
-            return skillRequestRepository.save(existingRequest);
-        }
-        return null; // or throw an exception
+    public SkillRequest getRequestById(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("SkillRequest not found with id " + id));
     }
 
     @Override
-    public void deleteRequest(Long id) {
-        skillRequestRepository.deleteById(id);
+    public List<SkillRequest> getAllRequests() {
+        return repository.findAll();
     }
 
     @Override
-    public List<SkillRequest> getRequestsBySkillId(Long skillId) {
-        return skillRequestRepository.findBySkill_Id(skillId);
+    public void deactivateRequest(Long id) {
+        SkillRequest request = getRequestById(id);
+        request.setActive(false);
+        repository.save(request);
     }
 }
