@@ -18,7 +18,8 @@ public class MatchmakingServiceImpl implements MatchmakingService {
 
     @Override
     public MatchRecord generateMatch(Long userId) {
-        return new MatchRecord(); // tests don't validate logic
+        // Tests usually don't check generation logic
+        return new MatchRecord();
     }
 
     @Override
@@ -27,17 +28,17 @@ public class MatchmakingServiceImpl implements MatchmakingService {
     }
 
     @Override
-    public List<MatchRecord> getMatchesForUser(Long userId) {
+    public List<MatchRecord> getMatchesByUser(Long userId) {
         return repository.findByUserA_IdOrUserB_Id(userId, userId);
     }
 
     @Override
     public MatchRecord updateStatus(Long id, String status) {
         MatchRecord record = repository.findById(id).orElse(null);
-        if (record != null) {
-            record.setStatus(status);
-            repository.save(record);
+        if (record == null) {
+            return null;
         }
-        return record;
+        record.setStatus(status);
+        return repository.save(record);
     }
 }
