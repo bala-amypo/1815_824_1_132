@@ -18,26 +18,25 @@ public class MatchmakingServiceImpl implements MatchmakingService {
 
     @Override
     public MatchRecord generateMatch(Long userId) {
-        // Tests usually don't check generation logic
-        return new MatchRecord();
+        MatchRecord record = new MatchRecord();
+        record.setStatus("PENDING");
+        return repository.save(record);
     }
 
     @Override
     public MatchRecord getMatchById(Long id) {
-        return repository.findById(id).orElse(null);
+        return repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("No match found"));
     }
 
     @Override
-    public List<MatchRecord> getMatchesByUser(Long userId) {
-        return repository.findByUserA_IdOrUserB_Id(userId, userId);
+    public List<MatchRecord> getMatchesForUser(Long userId) {
+        return repository.findByUserAIdOrUserBId(userId, userId);
     }
 
     @Override
-    public MatchRecord updateStatus(Long id, String status) {
-        MatchRecord record = repository.findById(id).orElse(null);
-        if (record == null) {
-            return null;
-        }
+    public MatchRecord updateMatchStatus(Long id, String status) {
+        MatchRecord record = getMatchById(id);
         record.setStatus(status);
         return repository.save(record);
     }

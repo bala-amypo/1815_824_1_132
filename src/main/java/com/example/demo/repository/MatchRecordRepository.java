@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface MatchRecordRepository extends JpaRepository<MatchRecord, Long> {
 
-    // 🔥 THIS METHOD MUST EXIST
-    List<MatchRecord> findByUserA_IdOrUserB_Id(Long userAId, Long userBId);
+    // REQUIRED for MatchmakingServiceImpl
+    List<MatchRecord> findByUserAIdOrUserBId(Long userAId, Long userBId);
 }
