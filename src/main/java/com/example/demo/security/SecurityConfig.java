@@ -14,14 +14,26 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
-            .csrf(csrf -> csrf.disable()) // 🔴 IMPORTANT for POST APIs
+            .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
+
+                // OPEN APIs
                 .requestMatchers(
                         "/auth/**",
                         "/swagger-ui/**",
                         "/v3/api-docs/**"
                 ).permitAll()
-                .requestMatchers(HttpMethod.POST, "/api/users").permitAll() // for demo
+
+                // TEMP: allow POSTs for review/demo
+                .requestMatchers(HttpMethod.POST,
+                        "/api/users",
+                        "/api/skills",
+                        "/api/skill-requests",
+                        "/api/skill-offers",
+                        "/api/matches/**"
+                ).permitAll()
+
+                // everything else secured
                 .anyRequest().authenticated()
             )
             .sessionManagement(sess ->
