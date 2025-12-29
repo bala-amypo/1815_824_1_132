@@ -9,12 +9,14 @@ public class UserProfile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(unique = true, nullable = false)
+    
 
     
 
     private String username;
-    private String email;
+    
     private Boolean active = true;
     private Date createdAt = new Date();
     private Date updatedAt = new Date();
